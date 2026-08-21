@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<meta name="theme-color" content="#0f172a"/>
+<meta name="description" content="Seattle & King County homelessness resources"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<title>Seattle Resource Finder</title>
+<link rel="manifest" href="manifest.json"/>
+<style>
+:root{--bg:#0f172a;--surface:#1e293b;--surface2:#334155;--text:#f1f5f9;--muted:#94a3b8;--accent:#38bdf8;--accent2:#22c55e;--danger:#f87171;--warning:#fbbf24;--radius:12px;--safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.45;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.app{min-height:100%;display:flex;flex-direction:column;padding-top:var(--safe-top)}
+header{position:sticky;top:0;z-index:50;background:rgba(15,23,42,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--surface2);padding:10px 14px 8px}
+header h1{font-size:1.1rem;font-weight:700;letter-spacing:-.02em}
+header .sub{font-size:.72rem;color:var(--muted);margin-top:1px}
+.toolbar{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;align-items:center}
+.search{flex:1;min-width:120px;background:var(--surface);border:1px solid var(--surface2);border-radius:999px;padding:10px 14px;outline:none;min-height:44px}
+.search:focus{border-color:var(--accent)}
+.btn{background:var(--surface2);border:none;border-radius:999px;padding:10px 12px;cursor:pointer;font-weight:600;font-size:.8rem;white-space:nowrap;min-height:44px}
+.btn:active{transform:scale(.97)}
+.btn-accent{background:var(--accent);color:#0f172a}
+.btn-ghost{background:transparent;border:1px solid var(--surface2)}
+.btn-warn{background:#78350f;color:#fde68a}
+.crisis-bar{display:flex;gap:6px;padding:8px 14px;background:#450a0a;border-bottom:1px solid #7f1d1d;flex-wrap:wrap}
+.crisis-bar a{flex:1;min-width:90px;text-align:center;text-decoration:none;background:#991b1b;color:#fff;font-weight:700;font-size:.78rem;padding:10px 8px;border-radius:10px;min-height:44px;display:flex;align-items:center;justify-content:center}
+.weather-banner{display:none;background:#1e3a5f;border-bottom:1px solid #334155;padding:10px 14px;font-size:.85rem;font-weight:600}
+.weather-banner.on{display:block}
+.weather-banner.heat{background:#7c2d12}
+main{flex:1;padding:10px 14px calc(88px + var(--safe-bottom));max-width:720px;margin:0 auto;width:100%}
+.systems{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;margin:0 -14px 10px;padding-left:14px;padding-right:14px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.systems::-webkit-scrollbar{display:none}
+.sys-chip{flex:0 0 auto;background:linear-gradient(135deg,#0ea5e9,#22c55e);color:#0f172a;font-weight:700;font-size:.78rem;padding:10px 14px;border-radius:999px;text-decoration:none;white-space:nowrap;min-height:40px;display:flex;align-items:center}
+.next-steps{background:linear-gradient(135deg,#14532d33,#0c4a6e33);border:1px solid #22c55e66;border-radius:var(--radius);padding:14px;margin-bottom:12px}
+.next-steps h3{font-size:.95rem;margin-bottom:8px}
+.next-steps ol{margin-left:18px;font-size:.85rem}
+.next-steps li{margin-bottom:6px}
+.next-steps a{font-weight:600}
+.section-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:14px 0 6px;font-weight:600}
+.card{background:var(--surface);border:1px solid var(--surface2);border-radius:var(--radius);padding:14px;margin-bottom:10px}
+.card.system{border-color:#0ea5e9;background:linear-gradient(180deg,#0c4a6e22,var(--surface))}
+.card.boosted{border-color:#22c55e66}
+.card-top{display:flex;gap:10px;align-items:flex-start}
+.icon{font-size:1.35rem;line-height:1;flex-shrink:0}
+.card h2{font-size:.98rem;font-weight:700;line-height:1.3}
+.meta{font-size:.78rem;color:var(--muted);margin-top:3px}
+.pay-line{color:var(--accent2);font-weight:700}
+.worked-before{display:block;margin-top:4px;font-size:.7rem;font-weight:700;color:var(--accent2)}
+
+/* ---- Smart Day Plan suggestions (Home + Planner overlay) ---- */
+.smart-day-plan{margin-top:10px}
+.smart-suggestion-group{margin-bottom:10px}
+.smart-suggestion-label{font-size:.7rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;margin-bottom:6px}
+.smart-suggestion{background:var(--surface);border:1px solid var(--surface2);border-radius:10px;padding:10px;margin-bottom:6px}
+.smart-suggestion-name{font-weight:700;font-size:.82rem}
+.smart-suggestion-addr{font-size:.72rem;color:var(--muted);margin-top:2px}
+.smart-suggestion-actions{display:flex;gap:8px;margin-top:6px}
+.smart-suggestion-actions a{font-size:.72rem;font-weight:700;color:var(--accent);text-decoration:none;padding:4px 10px;border:1px solid var(--accent);border-radius:8px}
+.notes{font-size:.84rem;margin-top:8px;color:#cbd5e1}
+.flags{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+.flag{font-size:.65rem;padding:3px 8px;border-radius:999px;text-transform:uppercase;letter-spacing:.03em;font-weight:600}
+.flag.low{background:#14532d;color:#86efac}
+.flag.id{background:#713f12;color:#fde68a}
+.flag.boost{background:#14532d;color:#86efac}
+.flag.tag{background:var(--surface2);color:var(--muted)}
+.call-first{font-size:.72rem;color:var(--warning);margin-top:6px;font-weight:600}
+.actions{display:flex;gap:6px;margin-top:12px;flex-wrap:wrap}
+.actions a,.actions button{flex:1;min-width:90px;text-align:center;text-decoration:none;background:var(--surface2);color:var(--text);border:none;border-radius:10px;padding:12px 8px;font-weight:600;font-size:.82rem;cursor:pointer;min-height:44px;display:flex;align-items:center;justify-content:center}
+.actions .call{background:var(--accent2);color:#052e16}
+.actions .dir{background:var(--accent);color:#0f172a}
+.actions .share{background:#4c1d95;color:#e9d5ff}
+.actions .note-btn{background:var(--surface2);font-size:.75rem}
+.local-note{margin-top:8px;font-size:.78rem;background:#1e293b;border-left:3px solid var(--warning);padding:6px 10px;border-radius:0 8px 8px 0;color:#fde68a}
+.count-bar{font-size:.72rem;color:var(--muted);margin-bottom:6px;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.offline-banner{display:none;background:#422006;color:#fde68a;text-align:center;padding:8px;font-size:.8rem;font-weight:600}
+.offline-banner.on{display:block}
+.empty{text-align:center;padding:36px 16px;color:var(--muted)}
+.disclaimer{font-size:.68rem;color:var(--muted);text-align:center;padding:14px 6px 6px;line-height:1.4}
+nav.bottom{position:fixed;bottom:0;left:0;right:0;z-index:40;background:rgba(15,23,42,.96);backdrop-filter:blur(12px);border-top:1px solid var(--surface2);display:flex;padding:6px 4px calc(6px + var(--safe-bottom));max-width:720px;margin:0 auto}
+nav.bottom button{flex:1;background:transparent;border:none;color:var(--muted);padding:6px 2px;font-size:.65rem;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:1px;min-height:48px}
+nav.bottom button.active{color:var(--accent)}
+nav.bottom .ico{font-size:1.2rem}
+.overlay{position:fixed;inset:0;z-index:100;background:rgba(2,6,23,.88);backdrop-filter:blur(8px);display:flex;align-items:flex-end;justify-content:center;padding:12px;padding-bottom:calc(12px + var(--safe-bottom))}
+.sheet{background:var(--surface);border-radius:20px 20px 16px 16px;width:100%;max-width:480px;padding:22px 18px 18px;max-height:90vh;overflow-y:auto}
+.sheet h2{font-size:1.2rem;margin-bottom:4px}
+.sheet .hint{color:var(--muted);font-size:.82rem;margin-bottom:14px}
+.q{margin-bottom:14px}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{background:var(--bg);border:1px solid var(--surface2);border-radius:12px;padding:12px 14px;cursor:pointer;display:flex;align-items:center;gap:10px;min-height:48px}
+.opt.selected{border-color:var(--accent);background:#0c4a6e44}
+.opt input{accent-color:var(--accent);width:18px;height:18px}
+.sheet-actions{display:flex;gap:8px;margin-top:6px}
+.sheet-actions .btn{flex:1;padding:14px;border-radius:12px;min-height:48px}
+.cheat{white-space:pre-wrap;font-family:ui-monospace,monospace;font-size:.75rem;background:var(--bg);padding:12px;border-radius:8px;max-height:50vh;overflow:auto}
+.lang-toggle{font-size:.75rem}
+
+/* ---- Today's plan (Home) ---- */
+.today-plan{background:linear-gradient(135deg,#1e293b,#0c4a6e44);border:1px solid var(--surface2);border-radius:var(--radius);padding:16px;margin-bottom:12px}
+.today-plan h2{font-size:.95rem;margin-bottom:6px}
+.today-plan .goal-line{font-size:.85rem;color:#cbd5e1;margin-bottom:10px}
+.home-today-needs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.home-need-pill{font-size:.7rem;font-weight:600;padding:5px 10px;border-radius:999px;background:var(--surface2);color:var(--muted)}
+.home-need-pill.done{background:var(--accent2);color:#052e16}
+.btn-mini{background:var(--accent);color:#0f172a;border:none;border-radius:10px;padding:10px 14px;font-weight:700;font-size:.8rem;cursor:pointer;min-height:40px}
+
+/* ---- Next Best Action (Home) ---- */
+.next-best-action:empty{display:none;margin:0}
+.next-best-action{margin-bottom:12px}
+.next-best-action h2{font-size:.95rem;margin-bottom:6px}
+.nba-sentence{font-size:.82rem;color:var(--muted);margin-bottom:10px}
+
+/* ---- Favorite / visited icon toggles on cards ---- */
+.card-icon-actions{display:flex;gap:6px;flex-shrink:0}
+.icon-toggle{width:34px;height:34px;border-radius:50%;border:1px solid var(--surface2);background:var(--bg);color:var(--muted);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.icon-toggle.fav.on{background:#4c1d1d;color:#fca5a5;border-color:#7f1d1d}
+.icon-toggle.visit.on{background:#14532d;color:#86efac;border-color:#16653f}
+
+/* ---- More menu ---- */
+.more-list{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+.more-item{background:var(--bg);border:1px solid var(--surface2);border-radius:12px;padding:14px;display:flex;align-items:center;gap:12px;cursor:pointer;min-height:52px;text-align:left;width:100%;font-size:.92rem;font-weight:600;color:var(--text)}
+.more-item:active{transform:scale(.98)}
+.more-item .mi-icon{font-size:1.3rem}
+
+/* ---- Contact form ---- */
+.field-label{display:block;font-weight:700;font-size:.8rem;margin:12px 0 6px}
+.field-input{width:100%;background:var(--bg);border:1px solid var(--surface2);border-radius:10px;padding:11px 12px;color:var(--text);font-size:.95rem}
+.field-input:focus{border-color:var(--accent)}
+.saved-note{font-size:.75rem;color:var(--accent2);margin-top:8px;min-height:1em}
+
+/* ---- Vault ---- */
+.vault-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.vault-item{position:relative;background:var(--bg);border:1px solid var(--surface2);border-radius:12px;overflow:hidden}
+.vault-item img{width:100%;height:110px;object-fit:cover;display:block;background:var(--surface2)}
+.vault-label{padding:7px 9px;font-size:.72rem;font-weight:700}
+.vault-del{position:absolute;top:6px;right:6px;background:rgba(2,6,23,.75);color:#fff;border:none;border-radius:8px;width:28px;height:28px;font-size:.85rem}
+.vault-add{border:2px dashed var(--surface2);border-radius:12px;background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:130px;gap:6px;color:var(--muted);font-weight:700;cursor:pointer}
+
+/* ---- Planner ---- */
+.day-pill-row{display:flex;gap:6px;overflow-x:auto;margin-bottom:14px;padding-bottom:2px}
+.day-pill{flex:0 0 auto;width:42px;height:42px;border-radius:50%;border:2px solid var(--surface2);background:var(--bg);font-weight:700;font-size:.75rem;color:var(--muted);cursor:pointer}
+.day-pill.active{background:var(--accent);color:#0f172a;border-color:var(--accent)}
+.day-pill.today-marker{border-color:var(--warning)}
+.goal-amount-row{display:flex;align-items:center;gap:8px;margin:8px 0 4px}
+.goal-amount-row input{flex:1;font-size:1.3rem;font-weight:800;text-align:center;padding:12px;background:var(--bg);border:1px solid var(--surface2);border-radius:10px;color:var(--text)}
+.stepper-btn{width:44px;height:44px;border-radius:10px;border:2px solid var(--accent);background:transparent;color:var(--accent);font-size:1.3rem;font-weight:800;flex-shrink:0;cursor:pointer}
+.need-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0}
+.need-chip{display:flex;align-items:center;gap:7px;padding:11px;border-radius:10px;border:2px solid var(--surface2);background:var(--bg);cursor:pointer;font-weight:600;font-size:.8rem}
+.need-chip input{width:19px;height:19px;accent-color:var(--accent2);flex-shrink:0}
+.need-chip.checked{border-color:var(--accent2)}
+.need-chip.done{background:#14532d33}
+
+/* ---- Schedule (dated appointments) ---- */
+.sched-empty{color:var(--muted);font-size:.85rem;padding:14px 4px;text-align:center}
+.sched-event{background:var(--bg);border:1px solid var(--surface2);border-radius:12px;padding:12px;margin-bottom:8px}
+.sched-event.completed{opacity:.6}
+.sched-event-top{display:flex;align-items:flex-start;gap:8px}
+.sched-complete-check{width:20px;height:20px;flex-shrink:0;margin-top:2px;accent-color:var(--accent2)}
+.sched-event-time{font-weight:800;font-size:.95rem;color:var(--accent);flex-shrink:0;min-width:58px}
+.sched-event-title{font-weight:700;font-size:.88rem;flex:1}
+.sched-event.completed .sched-event-title{text-decoration:line-through}
+.sched-event-loc{font-size:.75rem;color:var(--muted);margin-top:2px}
+.sched-event-alarm{font-size:.7rem;color:var(--muted);margin-top:4px}
+.sched-event-actions{display:flex;gap:6px;margin-top:8px}
+.sched-btn{flex:1;background:var(--surface2);border:none;border-radius:8px;padding:8px 6px;font-size:.72rem;font-weight:700;color:var(--text);cursor:pointer;min-height:38px}
+.sched-btn.edit{background:transparent;border:1px solid var(--surface2)}
+
+/* ---- Progress header (Home) ---- */
+.progress-header{background:var(--surface);border:1px solid var(--surface2);border-radius:14px;padding:12px 14px;margin-bottom:12px}
+.progress-head-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.progress-level-badge{font-weight:800;font-size:.85rem;color:var(--accent)}
+.progress-xp{font-weight:700;font-size:.8rem;color:var(--muted)}
+.progress-bar-track{background:var(--surface2);border-radius:999px;height:8px;overflow:hidden}
+.progress-bar-fill{background:var(--accent);height:100%;border-radius:999px;transition:width .3s ease}
+.progress-sub-row{display:flex;justify-content:space-between;font-size:.7rem;color:var(--muted);margin-top:6px}
+
+/* ---- Missions / Achievements / Unlocks (combined panel) ---- */
+.missions-sub-head{font-size:.85rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin:16px 0 8px}
+.missions-sub-head:first-child{margin-top:4px}
+.mission-item{display:flex;justify-content:space-between;align-items:center;background:var(--bg);border:1px solid var(--surface2);border-radius:10px;padding:10px 12px;margin-bottom:6px;font-size:.82rem}
+.mission-item.done{opacity:.65}
+.mission-title{font-weight:600;flex:1}
+.mission-xp{font-weight:800;color:var(--accent);font-size:.75rem;flex-shrink:0;margin-left:8px}
+.unlock-tier{background:var(--bg);border:1px solid var(--surface2);border-radius:10px;padding:10px 12px;margin-bottom:6px}
+.unlock-tier.reached{border-color:var(--accent2)}
+.unlock-tier-head{font-weight:700;font-size:.8rem;margin-bottom:3px}
+.unlock-tier-items{font-size:.7rem;color:var(--muted);text-transform:capitalize}
+
+/* ---- Skills ---- */
+.skill-card{cursor:pointer}
+.skill-head{cursor:pointer}
+.skill-body{display:none;margin-top:10px;padding-top:10px;border-top:1px solid var(--surface2);font-size:.85rem}
+.skill-body.open{display:block}
+.skill-body ul,.skill-body ol{padding-left:18px}
+.skill-body li{margin-bottom:6px}
+.chev{font-size:1.1rem;color:var(--muted)}
+
+/* ---- Print view ---- */
+#printArea{display:none}
+@media print{
+  body *{visibility:hidden}
+  #printArea,#printArea *{visibility:visible}
+  #printArea{display:block;position:absolute;top:0;left:0;width:100%;color:#000;background:#fff;padding:20px}
+  #printArea h1{font-size:1.3rem;margin-bottom:6px}
+  .print-date{font-size:.8rem;color:#555;margin-bottom:16px}
+  .print-item{border-bottom:1px solid #ccc;padding:8px 0;font-size:.85rem}
+}
+</style>
+</head>
+<body>
+<div class="offline-banner" id="offlineBanner" role="status">You are offline — showing saved data</div>
+<div class="app" id="app">
+<div class="crisis-bar" role="navigation" aria-label="Crisis lines">
+<a href="tel:988" id="crisis988">988 Crisis</a>
+<a href="tel:211" id="crisis211">211 Help</a>
+<a href="tel:18777370242" id="crisisDV">DV Hotline</a>
+<a href="tel:18774243838" id="crisisVet">Vets 877</a>
+</div>
+<div class="weather-banner" id="weatherBanner" role="status"></div>
+<header>
+<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
+<div>
+<h1 id="appTitle">Seattle Resource Finder</h1>
+<div class="sub" id="appSub">Shelters · Meals · Showers · Medical · Housing</div>
+</div>
+<button class="btn btn-ghost lang-toggle" id="btnLang" type="button" aria-label="Toggle language">ES</button>
+</div>
+<div class="toolbar">
+<input class="search" id="search" type="search" placeholder="Search…" autocomplete="off" enterkeyhint="search"/>
+<button class="btn btn-ghost" id="btnNeighborhood" type="button">Area</button>
+<button class="btn btn-ghost" id="btnProfile" type="button">Me</button>
+<button class="btn btn-warn" id="btnWeather" type="button" title="Severe weather">Weather</button>
+<button class="btn btn-ghost" id="btnMore" type="button" aria-label="More options">More</button>
+</div>
+</header>
+<main>
+<div class="systems" id="systems" aria-label="Critical numbers"></div>
+<div class="progress-header" id="progressHeader"></div>
+<div id="nextSteps"></div>
+<div class="today-plan" id="todayPlan"></div>
+<div class="next-best-action" id="nextBestAction"></div>
+<div class="count-bar">
+<span id="countLabel">Loading…</span>
+<span>
+<button class="btn btn-ghost" id="btnCheat" type="button" style="padding:4px 10px;font-size:.7rem;min-height:32px">List</button>
+<button class="btn btn-ghost" id="btnResetFilters" type="button" style="padding:4px 10px;font-size:.7rem;min-height:32px;display:none">Clear</button>
+</span>
+</div>
+<div id="list"></div>
+<p class="disclaimer" id="disclaimer">Hours and beds change. Always call before you go. Dial <strong>211</strong> for live help.</p>
+</main>
+<nav class="bottom" aria-label="Categories">
+<button type="button" class="active" data-view="all"><span class="ico">All</span><span class="nav-label">All</span></button>
+<button type="button" data-view="shelter"><span class="ico">Night</span><span class="nav-label">Shelter</span></button>
+<button type="button" data-view="meal"><span class="ico">Food</span><span class="nav-label">Food</span></button>
+<button type="button" data-view="shower"><span class="ico">Wash</span><span class="nav-label">Hygiene</span></button>
+<button type="button" data-view="medical"><span class="ico">Care</span><span class="nav-label">Health</span></button>
+<button type="button" data-view="work"><span class="ico">Work</span><span class="nav-label">Work</span></button>
+</nav>
+</div>
+
+<div class="overlay" id="onboard" style="display:none" role="dialog" aria-modal="true">
+<div class="sheet">
+<h2 id="obTitle">A few questions</h2>
+<p class="hint" id="obHint">So we show resources that fit you.</p>
+<div id="obBody"></div>
+<div class="sheet-actions">
+<button class="btn btn-ghost" id="obSkip" type="button">Skip</button>
+<button class="btn btn-accent" id="obNext" type="button">Continue</button>
+</div>
+</div>
+</div>
+
+<div class="overlay" id="hoodOverlay" style="display:none" role="dialog" aria-modal="true">
+<div class="sheet">
+<h2 id="hoodTitle">Where are you?</h2>
+<p class="hint" id="hoodHint">Rough area helps sort nearby resources.</p>
+<div class="opts" id="hoodOpts"></div>
+<div class="sheet-actions">
+<button class="btn btn-ghost" id="hoodCancel" type="button">Cancel</button>
+<button class="btn btn-accent" id="hoodGeo" type="button">Use GPS</button>
+</div>
+</div>
+</div>
+
+<div class="overlay" id="cheatOverlay" style="display:none" role="dialog" aria-modal="true">
+<div class="sheet">
+<h2 id="cheatTitle">My list</h2>
+<p class="hint">Screenshot or copy. Call before you go.</p>
+<div class="cheat" id="cheatBody"></div>
+<div class="sheet-actions">
+<button class="btn btn-ghost" id="cheatClose" type="button">Close</button>
+<button class="btn btn-accent" id="cheatCopy" type="button">Copy</button>
+</div>
+</div>
+</div>
+
+<div class="overlay" id="noteOverlay" style="display:none" role="dialog" aria-modal="true">
+<div class="sheet">
+<h2>Your note</h2>
+<p class="hint" id="noteHint">Private note on this device only.</p>
+<textarea id="noteInput" rows="3" style="width:100%;background:var(--bg);border:1px solid var(--surface2);border-radius:10px;padding:10px;color:var(--text);margin-bottom:12px" placeholder="e.g. Line was long Tuesday"></textarea>
+<div class="sheet-actions">
+<button class="btn btn-ghost" id="noteCancel" type="button">Cancel</button>
+<button class="btn btn-accent" id="noteSave" type="button">Save</button>
+</div>
+</div>
+</div>
+
+<div id="printArea" aria-hidden="true"></div>
+
+<div class="overlay" id="moreOverlay" style="display:none" role="dialog" aria-modal="true">
+<div class="sheet">
+<h2>More</h2>
+<p class="hint">Tools that stay on this device.</p>
+<div class="more-list">
+<button type="button" class="more-item" id="moreFavorites"><span class="mi-icon">&#10084;&#65039;</span> My Favorites</button>
+<button type="button" class="more-item" id="moreContact"><span class="mi-icon">&#128100;</span> My Contact</button>
+<button type="button" class="more-item" id="moreVault"><span class="mi-icon">&#128196;</span> My Vault (documents)</button>
+<button type="button" class="more-item" id="morePlanner"><span class="mi-icon">&#128197;</span> Weekly Planner &amp; Goals</button>
+<button type="button" class="more-item" id="moreSchedule"><span class="mi-icon">&#128198;</span> My Schedule (appointments)</button>
+<button type="button" class="more-item" id="moreMissions"><span class="mi-icon">&#127942;</span> Missions &amp; Progress</button>
+<button type="button" class="more-item" id="moreSkills"><span class="mi-icon">&#128218;</span> Skills</button>
+<button type="button" class="more-item" id="morePrint"><span class="mi-icon">&#128424;&#65039;</span> Print / screenshot my list</button>
+</div>
+<div class="sheet-actions">
+<button class="btn btn-ghost" id="moreClose" type="button">Close</button>
+</div>
+</div>
+</div>
+
+<div class="overlay" id="contactOverlay" style="display:none" role="dialog" aria-modal="true">
+<div class="sheet">
+<h2>My Contact</h2>
+<p class="hint">A permanent phone or email you can give people, even if your situation changes. Stored only on this device.</p>
+<label class="field-label" for="contactName">Your name</label>
+<input class="field-input" id="contactName" type="text" placeholder="Full name" autocomplete="off"/>
+<label class="field-label" for="contactPhone">Phone number</label>
+<input class="field-input" id="contactPhone" type="tel" placeholder="(555) 555-5555" autocomplete="off"/>
+<label class="field-label" for="contactEmail">Email address</label>
+<input class="field-input" id="contactEmail" type="email" placeholder="you@email.com" autocomplete="off"/>
+<label class="field-label" for="contactBackup">Backup contact (friend, family, case worker)</label>
+<input class="field-input" id="contactBackup" type="text" placeholder="Name and phone number" autocomplete="off"/>
+<label class="field-label" for="contactNotes">Notes (allergies, medical, anything important)</label>
+<textarea class="field-input" id="contactNotes" rows="3" placeholder="Optional"></textarea>
+<p class="saved-note" id="contactSavedNote"></p>
+<div class="sheet-actions">
+<button class="btn btn-ghost" id="contactClose" type="button">Close</button>
+<button class="btn btn-accent" id="contactSave" type="button">Save</button>
+</div>
+</div>
+</div>
+
+<div class="overlay" id="vaultOverlay" style="display:none" role="dialog" aria-modal="true">
+<div class="sheet">
+<h2>My Vault</h2>
+<p class="hint">Photos of your ID, papers, and records. Stored only on this device — never uploaded.</p>
+<div class="vault-grid" id="vaultGrid"></div>
+<input type="file" id="vaultFileInput" accept="image/*" capture="environment" style="display:none"/>
+<div class="sheet-actions">
+<button class="btn btn-accent" id="vaultClose" type="button" style="flex:1">Done</button>
+</div>
+</div>
+</div>
+
+<div class="overlay" id="plannerOverlay" style="display:none" role="dialog" aria-modal="true">
+<div class="sheet">
+<h2>Weekly Planner</h2>
+<p class="hint">Set a plan for each day. It shows up on Home.</p>
+<div class="day-pill-row" id="dayPillRow"></div>
+<h3 id="plannerDayTitle" style="font-size:.95rem;margin-bottom:4px">Today</h3>
+<label class="field-label">Daily money goal</label>
+<div class="goal-amount-row">
+<button type="button" class="stepper-btn" id="goalMinus">&minus;</button>
+<input class="field-input" id="goalAmount" type="number" inputmode="numeric" value="0"/>
+<button type="button" class="stepper-btn" id="goalPlus">&plus;</button>
+</div>
+<p class="hint" style="margin:4px 0 0">Whatever feels realistic today — change it any time.</p>
+<label class="field-label">What do you need to do today?</label>
+<div class="need-grid" id="needGrid"></div>
+<div id="plannerSmartSuggestions"></div>
+<div class="sheet-actions">
+<button class="btn btn-ghost" id="addToCalendar" type="button">&#128197; Add to calendar</button>
+</div>
+<div class="sheet-actions" style="margin-top:8px">
+<button class="btn btn-ghost" id="setReminder" type="button">&#9200; Remind me today</button>
+</div>
+<p class="hint" id="reminderStatus" style="margin-top:8px"></p>
+<div id="routineCopySection" style="display:none;margin-top:14px;border-top:1px solid var(--surface2);padding-top:12px">
+<label class="field-label" style="margin-top:0">Copy this day's plan to</label>
+<div style="display:flex;gap:8px;align-items:center">
+<select class="field-input" id="routineCopyTarget" style="flex:1"></select>
+<button class="btn btn-ghost" id="routineCopyBtn" type="button">Copy</button>
+</div>
+<p class="hint" id="routineCopyStatus" style="margin-top:6px"></p>
+</div>
+<div class="sheet-actions" style="margin-top:10px">
+<button class="btn btn-accent" id="plannerClose" type="button" style="flex:1">Done</button>
+</div>
+</div>
+</div>
+
+<div class="overlay" id="scheduleOverlay" style="display:none" role="dialog" aria-modal="true">
+<div class="sheet">
+<h2>My Schedule</h2>
+<p class="hint">Plan appointments across your whole week — showers, clinic visits, work check-ins, anything with a time. Add each one to your phone's calendar with a reminder, or let this app try to alert you while it's open.</p>
+<div class="day-pill-row" id="schedDayPillRow"></div>
+<h3 id="schedDayTitle" style="font-size:.95rem;margin-bottom:8px">Today</h3>
+<div id="schedEventList"></div>
+<button type="button" class="btn btn-accent" id="schedAddBtn" style="margin-top:12px">&plus; Add appointment</button>
+<div class="sheet-actions" style="margin-top:14px">
+<button class="btn btn-accent" id="scheduleClose" type="button" style="flex:1">Done</button>
+</div>
+</div>
+</div>
+
+<div class="overlay" id="eventFormOverlay" style="display:none" role="dialog" aria-modal="true">
+<div class="sheet">
+<h2 id="eventFormTitle">Add appointment</h2>
+<label class="field-label" for="evTitle">What is it?</label>
+<input class="field-input" id="evTitle" type="text" placeholder="e.g. Shower at Urban Rest Stop" autocomplete="off"/>
+<label class="field-label" for="evDate">Date</label>
+<input class="field-input" id="evDate" type="date"/>
+<label class="field-label" for="evTime">Time</label>
+<input class="field-input" id="evTime" type="time" value="09:00"/>
+<label class="field-label" for="evDuration">How long? (minutes)</label>
+<input class="field-input" id="evDuration" type="number" inputmode="numeric" value="60" min="5" step="5"/>
+<label class="field-label" for="evLocation">Where</label>
+<input class="field-input" id="evLocation" type="text" placeholder="Address or place name" autocomplete="off"/>
+<label class="field-label" for="evAlarm">Remind me before</label>
+<select class="field-input" id="evAlarm">
+<option value="0">No reminder</option>
+<option value="15">15 minutes before</option>
+<option value="30">30 minutes before</option>
+<option value="60" selected>1 hour before</option>
+<option value="120">2 hours before</option>
+<option value="1440">1 day before</option>
+</select>
+<label class="field-label" for="evNotes">Notes</label>
+<textarea class="field-input" id="evNotes" rows="2" placeholder="Optional"></textarea>
+<p class="hint" id="eventFormHint" style="margin-top:6px"></p>
+<div class="sheet-actions" style="margin-top:10px">
+<button class="btn btn-ghost" id="eventFormCancel" type="button">Cancel</button>
+<button class="btn btn-accent" id="eventFormSave" type="button">Save</button>
+</div>
+<div class="sheet-actions" style="margin-top:8px" id="eventFormDeleteRow">
+<button class="btn btn-ghost" id="eventFormDelete" type="button" style="color:#fca5a5">Delete this appointment</button>
+</div>
+</div>
+</div>
+
+<div class="overlay" id="skillsOverlay" style="display:none" role="dialog" aria-modal="true">
+<div class="sheet">
+<h2>Skills</h2>
+<p class="hint">Short lessons you can read offline, any time.</p>
+<div id="skillsList"></div>
+<div class="sheet-actions">
+<button class="btn btn-accent" id="skillsClose" type="button" style="flex:1">Close</button>
+</div>
+</div>
+</div>
+
+<div class="overlay" id="missionsOverlay" style="display:none" role="dialog" aria-modal="true">
+<div class="sheet">
+<h2>Missions &amp; Progress</h2>
+<p class="hint">Practical things worth doing, and what you've unlocked so far. Core resources, shelters, food, and crisis support are never locked behind this.</p>
+<div id="missionsBody"></div>
+<div class="sheet-actions">
+<button class="btn btn-accent" id="missionsClose" type="button" style="flex:1">Close</button>
+</div>
+</div>
+</div>
+
+<script src="type_meta.js"></script>
+<script src="seattle_data.js"></script>
+<script src="onboarding_and_filter.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
