@@ -9,69 +9,111 @@
  */
 
 // ---------- 1. Onboarding questions (exact copy ready for UI) ----------
+// Every question here is skippable (the Skip button ends onboarding immediately
+// and still shows the full, un-narrowed resource list — see filterResources()).
+// `why` is shown as small print under the question so a person can decide,
+// per-question, whether answering is worth it to them. Nothing here is ever
+// used as proof of eligibility by this app — it only reorders what's shown.
 var ONBOARDING_QUESTIONS = [
   {
     id: 'ageGroup',
     question: 'Which best describes you?',
+    questionEs: '¿Cuál te describe mejor?',
+    why: 'Used only to show youth- or senior-specific programs first. Skip is fine.',
+    whyEs: 'Solo se usa para mostrar primero programas para jóvenes o personas mayores. Puedes omitir esta pregunta.',
     type: 'single',
     options: [
-      { value: 'youth', label: 'Youth or young adult (under 25)' },
-      { value: 'adult', label: 'Adult (25–59)' },
-      { value: 'senior', label: 'Senior (60+)' }
+      { value: 'youth', label: 'Youth or young adult (under 25)', labelEs: 'Joven o adulto joven (menos de 25)' },
+      { value: 'adult', label: 'Adult (25–59)', labelEs: 'Adulto (25–59)' },
+      { value: 'senior', label: 'Senior (60+)', labelEs: 'Persona mayor (60+)' }
     ]
   },
   {
     id: 'gender',
-    question: 'Gender (optional — helps show women-only or men-only spaces)',
+    question: 'Gender (optional)',
+    questionEs: 'Género (opcional)',
+    why: 'Only used to surface women-only or men-only spaces higher in the list. Never shown to anyone else, never leaves this device, and skipping changes nothing else.',
+    whyEs: 'Solo se usa para mostrar primero espacios exclusivos para mujeres u hombres. Nunca se muestra a nadie más, nunca sale de este dispositivo, y omitirla no cambia nada más.',
     type: 'single',
     options: [
-      { value: 'woman', label: 'Woman / identifies as female' },
-      { value: 'man', label: 'Man / identifies as male' },
-      { value: 'nonbinary', label: 'Non-binary / another identity' },
-      { value: 'preferNot', label: 'Prefer not to say' }
+      { value: 'woman', label: 'Woman / identifies as female', labelEs: 'Mujer / se identifica como femenino' },
+      { value: 'man', label: 'Man / identifies as male', labelEs: 'Hombre / se identifica como masculino' },
+      { value: 'nonbinary', label: 'Non-binary / another identity', labelEs: 'No binario / otra identidad' },
+      { value: 'preferNot', label: 'Prefer not to say', labelEs: 'Prefiero no decir' }
     ]
   },
   {
     id: 'hasKids',
     question: 'Are you with children under 18?',
+    questionEs: '¿Estás con niños menores de 18 años?',
+    why: 'Surfaces family shelters and family-specific programs first.',
+    whyEs: 'Muestra primero albergues y programas familiares.',
     type: 'boolean',
     yesLabel: 'Yes — I have kids with me',
-    noLabel: 'No'
+    yesLabelEs: 'Sí — tengo niños conmigo',
+    noLabel: 'No',
+    noLabelEs: 'No'
   },
   {
     id: 'dv',
     question: 'Are you fleeing domestic violence or need a confidential safe place?',
+    questionEs: '¿Estás huyendo de violencia doméstica o necesitas un lugar seguro y confidencial?',
+    why: 'Only used to move confidential DV resources to the top. This answer stays on this device and is never shown in the resource list or in this app\u2019s title. If you need to leave this screen quickly, use the exit option below.',
+    whyEs: 'Solo se usa para mostrar primero los recursos confidenciales de violencia doméstica. Esta respuesta permanece en este dispositivo y nunca se muestra en la lista de recursos ni en el título de esta app. Si necesitas salir rápidamente de esta pantalla, usa la opción de salida abajo.',
+    quickExit: true,
     type: 'boolean',
     yesLabel: 'Yes',
-    noLabel: 'No'
+    yesLabelEs: 'Sí',
+    noLabel: 'No',
+    noLabelEs: 'No'
   },
   {
     id: 'veteran',
     question: 'Are you a veteran (any branch, including National Guard / Reserves)?',
+    questionEs: '¿Eres veterano (cualquier rama, incluyendo Guardia Nacional / Reserva)?',
+    why: 'Surfaces VA and veteran-specific programs first. This app does not verify service status — programs you contact will do their own eligibility check.',
+    whyEs: 'Muestra primero programas de VA y para veteranos. Esta app no verifica el estatus de servicio — los programas que contactes harán su propia verificación.',
     type: 'boolean',
     yesLabel: 'Yes',
-    noLabel: 'No'
+    yesLabelEs: 'Sí',
+    noLabel: 'No',
+    noLabelEs: 'No'
   },
   {
     id: 'vehicle',
     question: 'Are you currently living in a car, van, or RV?',
+    questionEs: '¿Actualmente vives en un auto, van, o RV?',
+    why: 'Surfaces safe parking programs first.',
+    whyEs: 'Muestra primero programas de estacionamiento seguro.',
     type: 'boolean',
     yesLabel: 'Yes',
-    noLabel: 'No'
+    yesLabelEs: 'Sí',
+    noLabel: 'No',
+    noLabelEs: 'No'
   },
   {
     id: 'pet',
     question: 'Do you have a pet with you?',
+    questionEs: '¿Tienes una mascota contigo?',
+    why: 'Surfaces pet-friendly shelters and services first — otherwise many shelter listings won\u2019t mention pet policy at all.',
+    whyEs: 'Muestra primero albergues y servicios que aceptan mascotas.',
     type: 'boolean',
     yesLabel: 'Yes',
-    noLabel: 'No'
+    yesLabelEs: 'Sí',
+    noLabel: 'No',
+    noLabelEs: 'No'
   },
   {
     id: 'native',
     question: 'Do you identify as Native American, Alaska Native, or Indigenous?',
+    questionEs: '¿Te identificas como nativo americano, nativo de Alaska, o indígena?',
+    why: 'Only used to surface culturally-specific programs (e.g. Chief Seattle Club) first.',
+    whyEs: 'Solo se usa para mostrar primero programas culturalmente específicos (p. ej. Chief Seattle Club).',
     type: 'boolean',
     yesLabel: 'Yes',
-    noLabel: 'No / Prefer not to say'
+    yesLabelEs: 'Sí',
+    noLabel: 'No / Prefer not to say',
+    noLabelEs: 'No / Prefiero no decir'
   }
 ];
 

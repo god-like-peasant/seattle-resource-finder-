@@ -6,6 +6,8 @@
 <meta name="theme-color" content="#0f172a"/>
 <meta name="description" content="Seattle & King County homelessness resources"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png"/>
 <title>Seattle Resource Finder</title>
 <link rel="manifest" href="manifest.json"/>
 <style>
@@ -36,7 +38,7 @@ header .sub{font-size:.72rem;color:var(--muted);margin-top:1px}
 main{flex:1;padding:10px 14px calc(88px + var(--safe-bottom));max-width:720px;margin:0 auto;width:100%}
 .systems{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;margin:0 -14px 10px;padding-left:14px;padding-right:14px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .systems::-webkit-scrollbar{display:none}
-.sys-chip{flex:0 0 auto;background:linear-gradient(135deg,#0ea5e9,#22c55e);color:#0f172a;font-weight:700;font-size:.78rem;padding:10px 14px;border-radius:999px;text-decoration:none;white-space:nowrap;min-height:40px;display:flex;align-items:center}
+.sys-chip{flex:0 0 auto;background:linear-gradient(135deg,#0ea5e9,#22c55e);color:#0f172a;font-weight:700;font-size:.78rem;padding:10px 14px;border-radius:999px;text-decoration:none;white-space:nowrap;min-height:44px;display:flex;align-items:center}
 .next-steps{background:linear-gradient(135deg,#14532d33,#0c4a6e33);border:1px solid #22c55e66;border-radius:var(--radius);padding:14px;margin-bottom:12px}
 .next-steps h3{font-size:.95rem;margin-bottom:8px}
 .next-steps ol{margin-left:18px;font-size:.85rem}
@@ -107,7 +109,7 @@ nav.bottom .ico{font-size:1.2rem}
 .home-today-needs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
 .home-need-pill{font-size:.7rem;font-weight:600;padding:5px 10px;border-radius:999px;background:var(--surface2);color:var(--muted)}
 .home-need-pill.done{background:var(--accent2);color:#052e16}
-.btn-mini{background:var(--accent);color:#0f172a;border:none;border-radius:10px;padding:10px 14px;font-weight:700;font-size:.8rem;cursor:pointer;min-height:40px}
+.btn-mini{background:var(--accent);color:#0f172a;border:none;border-radius:10px;padding:10px 14px;font-weight:700;font-size:.8rem;cursor:pointer;min-height:44px}
 
 /* ---- Next Best Action (Home) ---- */
 .next-best-action:empty{display:none;margin:0}
@@ -117,7 +119,7 @@ nav.bottom .ico{font-size:1.2rem}
 
 /* ---- Favorite / visited icon toggles on cards ---- */
 .card-icon-actions{display:flex;gap:6px;flex-shrink:0}
-.icon-toggle{width:34px;height:34px;border-radius:50%;border:1px solid var(--surface2);background:var(--bg);color:var(--muted);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.icon-toggle{width:44px;height:44px;border-radius:50%;border:1px solid var(--surface2);background:var(--bg);color:var(--muted);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .icon-toggle.fav.on{background:#4c1d1d;color:#fca5a5;border-color:#7f1d1d}
 .icon-toggle.visit.on{background:#14532d;color:#86efac;border-color:#16653f}
 
@@ -138,12 +140,12 @@ nav.bottom .ico{font-size:1.2rem}
 .vault-item{position:relative;background:var(--bg);border:1px solid var(--surface2);border-radius:12px;overflow:hidden}
 .vault-item img{width:100%;height:110px;object-fit:cover;display:block;background:var(--surface2)}
 .vault-label{padding:7px 9px;font-size:.72rem;font-weight:700}
-.vault-del{position:absolute;top:6px;right:6px;background:rgba(2,6,23,.75);color:#fff;border:none;border-radius:8px;width:28px;height:28px;font-size:.85rem}
+.vault-del{position:absolute;top:4px;right:4px;background:rgba(2,6,23,.75);color:#fff;border:none;border-radius:10px;width:44px;height:44px;font-size:.95rem}
 .vault-add{border:2px dashed var(--surface2);border-radius:12px;background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:130px;gap:6px;color:var(--muted);font-weight:700;cursor:pointer}
 
 /* ---- Planner ---- */
 .day-pill-row{display:flex;gap:6px;overflow-x:auto;margin-bottom:14px;padding-bottom:2px}
-.day-pill{flex:0 0 auto;width:42px;height:42px;border-radius:50%;border:2px solid var(--surface2);background:var(--bg);font-weight:700;font-size:.75rem;color:var(--muted);cursor:pointer}
+.day-pill{flex:0 0 auto;width:44px;height:44px;border-radius:50%;border:2px solid var(--surface2);background:var(--bg);font-weight:700;font-size:.75rem;color:var(--muted);cursor:pointer}
 .day-pill.active{background:var(--accent);color:#0f172a;border-color:var(--accent)}
 .day-pill.today-marker{border-color:var(--warning)}
 .goal-amount-row{display:flex;align-items:center;gap:8px;margin:8px 0 4px}
@@ -167,7 +169,7 @@ nav.bottom .ico{font-size:1.2rem}
 .sched-event-loc{font-size:.75rem;color:var(--muted);margin-top:2px}
 .sched-event-alarm{font-size:.7rem;color:var(--muted);margin-top:4px}
 .sched-event-actions{display:flex;gap:6px;margin-top:8px}
-.sched-btn{flex:1;background:var(--surface2);border:none;border-radius:8px;padding:8px 6px;font-size:.72rem;font-weight:700;color:var(--text);cursor:pointer;min-height:38px}
+.sched-btn{flex:1;background:var(--surface2);border:none;border-radius:8px;padding:8px 6px;font-size:.72rem;font-weight:700;color:var(--text);cursor:pointer;min-height:44px}
 .sched-btn.edit{background:transparent;border:1px solid var(--surface2)}
 
 /* ---- Progress header (Home) ---- */
@@ -235,11 +237,17 @@ nav.bottom .ico{font-size:1.2rem}
 <button class="btn btn-ghost" id="btnNeighborhood" type="button">Area</button>
 <button class="btn btn-ghost" id="btnProfile" type="button">Me</button>
 <button class="btn btn-warn" id="btnWeather" type="button" title="Severe weather">Weather</button>
+<button class="btn btn-warn" id="btnEmergency" type="button" title="Emergency numbers" style="background:#7f1d1d;border-color:#7f1d1d">SOS</button>
 <button class="btn btn-ghost" id="btnMore" type="button" aria-label="More options">More</button>
 </div>
 </header>
 <main>
 <div class="systems" id="systems" aria-label="Critical numbers"></div>
+<section aria-labelledby="nextStepHeading" style="margin:10px 0">
+<h2 id="nextStepHeading" style="font-size:.85rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:0 0 8px">What do you need right now?</h2>
+<div id="nextStepPicker" style="display:flex;flex-wrap:wrap;gap:6px" role="group" aria-label="Choose what you need"></div>
+<div id="nextStepResult" style="margin-top:10px" aria-live="polite"></div>
+</section>
 <div class="progress-header" id="progressHeader"></div>
 <div id="nextSteps"></div>
 <div class="today-plan" id="todayPlan"></div>
@@ -476,9 +484,31 @@ nav.bottom .ico{font-size:1.2rem}
 </div>
 </div>
 
+<div class="overlay" id="appAlertOverlay" style="display:none" role="alertdialog" aria-modal="true" aria-labelledby="appAlertMsg">
+<div class="sheet">
+<p class="hint" id="appAlertMsg" style="font-size:1rem;color:var(--text)"></p>
+<input class="field-input" id="appAlertInput" type="text" style="display:none;margin-top:4px" aria-labelledby="appAlertMsg" autocomplete="off"/>
+<div class="sheet-actions" id="appAlertActions">
+<button class="btn btn-accent" id="appAlertOk" type="button">OK</button>
+</div>
+</div>
+</div>
+
+<div class="overlay" id="emergencyOverlay" style="display:none" role="dialog" aria-modal="true" aria-labelledby="emergencyTitle">
+<div class="sheet">
+<h2 id="emergencyTitle">Emergency</h2>
+<p class="hint">Big, simple, works offline. No searching needed.</p>
+<div id="emergencyList" class="crisis-bar" style="flex-direction:column;gap:10px;padding:4px 0"></div>
+<div class="sheet-actions">
+<button class="btn btn-ghost" id="emergencyClose" type="button">Close</button>
+</div>
+</div>
+</div>
+
 <script src="type_meta.js"></script>
 <script src="seattle_data.js"></script>
 <script src="onboarding_and_filter.js"></script>
 <script src="app.js"></script>
+
 </body>
 </html>

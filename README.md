@@ -58,10 +58,13 @@ people this app is built for.
 ## Updating the resource data
 
 Nonprofits and outreach teams will want to keep `seattle_data.js` current.
-It's a plain JavaScript file with two arrays:
-
-- `SEATTLE_RESOURCES` — every shelter, meal, clinic, etc.
-- `SEATTLE_WORK` — day-labor and temp work leads
+It's a plain JavaScript file with exactly **one** array — `SEATTLE_RESOURCES`.
+(A previous version of this file also had a `SEATTLE_WORK` constant.
+Nothing in `app.js` ever read it, so it was dead code and has been
+removed. Work/day-labor listings live in `SEATTLE_RESOURCES` with
+`type:'work'`, exactly like every other category. If you're editing an
+older copy of this file and still see `SEATTLE_WORK`, delete it — do not
+add new listings there.)
 
 **To add a resource**, copy an existing entry and edit it:
 
@@ -73,7 +76,10 @@ It's a plain JavaScript file with two arrays:
 ```
 
 Field notes:
-- `id` must be unique across the whole file. Use a new number.
+- `id` must be unique across the whole file. Use a new number. Run
+  `node validate.js` after editing — it will catch a duplicate id, a bad
+  coordinate, a missing required field, or an unknown `type` before you
+  ship the change.
 - `type` must match one of the keys in `type_meta.js` (see table below) or
   the entry will fall back to a generic pin icon.
 - `lat`/`lon` are used for distance sorting and the neighborhood picker. If
@@ -85,39 +91,216 @@ Field notes:
   specifically serves that population.
 - `free:false` shows a "may have a cost" indicator instead of "Free."
 
-After editing, open the app and confirm the entry appears under the right
-category filter before publishing.
+**Trust / provenance fields** (optional, additive — see the full schema
+comment at the top of `seattle_data.js`):
+- `sourceName` / `sourceUrl` — the organization/page you actually checked
+  this entry against.
+- `verifiedAt` — `'YYYY-MM-DD'`, the date you checked it. **Only set this
+  when it's true.** An entry with no `verifiedAt` is automatically shown
+  in the app as "not independently verified — call before you go" (via
+  `normalizeResource()` in `app.js`) — that is the correct, honest default
+  for anything you haven't personally checked. Do not backfill a
+  `verifiedAt` date to make a resource look more trustworthy than it is.
+- `verificationStatus: 'verified'` — only set this alongside `sourceUrl`;
+  `validate.js` will fail the build if a resource claims `'verified'` with
+  no source.
+- `appointmentRequired` / `walkIn` / `referralRequired` — `true`/`false`,
+  or omit if genuinely unknown. This drives the status badge on the card
+  ("Appointment required" / "Walk-in" / "Call to confirm" / etc. — see
+  `resourceStatusBadge()` in `app.js`). Leave it unset rather than
+  guessing; the app shows "Call to confirm" for anything with no signal
+  either way, which is the safe default.
+
+**How resource data should be reviewed.** There is no live feed behind
+this app — every phone number, address, and hours string is a point-in-
+time snapshot someone typed in or copied from a source. A workable
+process for a maintaining nonprofit:
+1. Pick a batch (start with the `system`-type entries and anything a lot
+   of people will call — shelters, food, DV, veterans).
+2. Call or check the organization's own site/page for each one.
+3. Update the fields that changed, and set `sourceUrl` + `verifiedAt` to
+   today's date on anything you just confirmed.
+4. Bump `DATA_LAST_REVIEWED` near the top of `app.js`'s `I18N` block (this
+   date is what's shown in the app's disclaimer footer as "Data last
+   reviewed").
+5. Run `node validate.js`, fix anything it flags, then deploy.
+6. Repeat on a schedule — monthly for the small number of highest-traffic
+   system entries is far more valuable than a rare full pass over all 155.
+
+**Marking something stale or closed.** There's no "closed" flag today —
+if an organization has shut down or a program ended, delete the entry (or
+change its `notes` to say so clearly and set `free`/`hours` accordingly)
+rather than leaving a listing that will send someone to a dead end.
 
 ### Current data snapshot
 
-155 resources across 27 categories, including 5 day-labor/temp-work
-listings, each with GPS coordinates so they sort by distance like every
-other category. Every entry was
-written with real, named Seattle-area organizations where possible (DESC,
-Mary's Place, LIHI, Plymouth Housing, Urban Rest Stop, Chief Seattle Club,
-YouthCare, SSVF, and others). **Hours, phone numbers, and program rules
-change** — this data should be reviewed and refreshed regularly by someone
-with local knowledge, not treated as permanently accurate. The app itself
-reminds users to call or check 211 before traveling to any listing.
+176 resources across 27 categories (up from an initial 155 — see "Data
+expansion" below), including 5 day-labor/temp-work listings, each with GPS
+coordinates so they sort by distance like every other category. Every
+entry was written with real, named Seattle-area organizations where
+possible (DESC, Mary's Place, LIHI, Plymouth Housing, Urban Rest Stop,
+Chief Seattle Club, YouthCare, SSVF, KCRHA, and others).
+
+**What has actually been independently verified as of 2026-08-30** (phone
+and/or hours checked against a current, named source this session): 19 of
+176 entries carry `verificationStatus:'verified'` and a `sourceUrl` —
+Washington 211, Crisis Connections, KCRHA Coordinated Entry, the Family
+Emergency Shelter Access Line, the National Call Center for Homeless
+Veterans, the Veterans Crisis Line, VA Puget Sound CHOS, the King County
+and national DV hotlines, KCSARC, Washington Teen Link, two Regional
+Access Points (Catholic Community Services Seattle, Solid Ground North
+Seattle), ROOTS, and two youth shelter lines (The Landing, Nexus). **The
+other ~157 entries were not independently re-checked in this pass** and
+are correctly shown in the app as "not independently verified" rather
+than labeled verified. A real rollout needs someone with local knowledge
+(ideally a partner nonprofit or 211 itself) to work through the rest —
+see "How resource data should be reviewed" above, and run
+`node validate.js` for a prioritized list of which ones matter most.
+
+### Data expansion (2026-08-30)
+
+An uploaded "expansion pack" file (45 candidate records, citing KCRHA's
+public page and Washington 211 as sources) was reviewed and selectively
+merged in, not pasted in wholesale:
+
+- **Deduplicated by hand.** An automated name/phone match caught most
+  overlaps with the existing dataset, but missed several near-duplicates
+  with different naming conventions (e.g. "VA Community Resource &
+  Referral Center (CRRC)" vs. the file's "Community Resource and Referral
+  Center (CRRC)" — same address, different word order). Automated
+  deduplication on this kind of data is necessarily approximate; a human
+  pass is still required before merging.
+- **21 genuinely new entries were added** (new Regional Access Points,
+  DV/sexual-assault crisis lines, youth shelter lines, and a handful of
+  web-only resources), and **~6 existing entries were updated in place**
+  with corrected/expanded phone numbers and source metadata rather than
+  duplicated.
+- **A real, unresolved conflict was found and preserved rather than
+  silently resolved:** Crisis Connections' own site states 211 live
+  specialists are available Mon–Fri 9am–5pm; KCRHA's current page states
+  Mon–Fri 8am–6pm. The `sys1` entry's `hours` field says so explicitly
+  instead of picking one.
+- **What was deliberately NOT done:** the source file's own
+  `important_limitations` field states it does not contain KCRHA's full
+  400+-program Regional Services Database or Washington 211's 17,000+
+  statewide listings — those were not fabricated or approximated here
+  either. Instead, both are represented as **escalation pointers** (`r153b`
+  for the KCRHA database, the 211 entry's notes for WA 211's full
+  directory) rather than as claims that this app contains them.
+
+### KCRHA / 211 relationship
+
+This app's curated dataset is a small, hand-maintained subset. KCRHA's own
+Regional Services Database and Washington 211's directory are both much
+larger and more current than anything a static offline app can keep in
+sync with by hand. Treat this app as a fast, offline-first front door —
+211 and the KCRHA database are the broader system behind it, not
+competitors to it. See "What this app does NOT guarantee" below.
 
 | Category | Count | | Category | Count |
 |---|---|---|---|---|
-| Shelter | 21 | | Recovery Support | 8 |
-| Day Center | 18 | | Housing Navigation | 13 |
-| Free Meal | 10 | | Case Mgmt / Outreach | 5 |
+| Shelter | 23 | | Recovery Support | 10 |
+| Day Center | 20 | | Housing Navigation | 16 |
+| System Entry Point | 19 | | Case Mgmt / Outreach | 6 |
+| Free Meal | 10 | | Day Labor / Work | 5 |
 | Food Bank | 9 | | Safe Parking / Vehicle | 5 |
-| System Entry Point | 9 | | Day Labor / Work | 5 |
 | Shower / Laundry | 7 | | Clothing | 4 |
-| Medical Clinic | 6 | | Legal Aid | 3 |
+| Medical Clinic | 7 | | Legal Aid | 3 |
 | ID / Documents | 3 | | Library Services | 3 |
 | Storage Lockers | 3 | | Mail Service | 3 |
 | Transportation Help | 3 | | Pet-Friendly | 3 |
 | Tiny House Village | 3 | | Benefits Enrollment | 2 |
 | Charging / Wi-Fi | 2 | | Mental Health | 2 |
 | Warming / Cooling | 2 | | Water | 2 |
-| Dental Clinic | 1 | | | |
+| Dental Clinic | 1 | | **Total** | **176** |
 
 ---
+
+## What this app does NOT guarantee
+
+Read this before describing the app to anyone, and keep this list in mind
+when writing any new UI copy:
+
+- **It does not know real-time availability.** No shelter bed count, no
+  "open right now" signal. "Usually open — published hours" means exactly
+  that: the hours are what's published, not a live status. See
+  `resourceStatusBadge()` for the exact vocabulary used and why.
+- **It is not a complete list of every service in King County.** It's a
+  curated offline guide. 211 (Washington 211 / Crisis Connections) covers
+  the full regional service network and is always presented as the
+  fallback when this app's dataset doesn't have a good match — an empty
+  search result is worded to say "no matches in this offline guide," never
+  "no help exists."
+- **Coordinated Entry does not guarantee housing**, and completing an
+  assessment does not guarantee a referral or placement — this app's
+  Coordinated Entry entry uses KCRHA's own current wording on that point.
+- **"Nearest" is not "best," "open," or "available."** Distance is shown
+  as straight-line miles, explicitly labeled as such — never a walking-
+  time or transit-time estimate, which this app has no data source for.
+- **Local storage is not encrypted secure storage.** Contact info, vault
+  photos, notes, and onboarding answers stay on the device and are never
+  uploaded — but anyone with access to the unlocked device/browser could
+  potentially see them. This app does not implement its own encryption on
+  top of the browser's storage, and does not claim to.
+- **The onboarding profile is not proof of eligibility for anything.** It
+  only reorders what's shown; every organization contacted will do its
+  own eligibility screening.
+
+---
+
+## Testing & validation
+
+Run before deploying any change:
+
+```bash
+node validate.js
+```
+
+This checks (zero dependencies, plain Node): every JS file parses; no
+duplicate resource ids; every resource has its required fields and a
+coordinate inside the greater Seattle/King County area; every resource
+`type` is defined in `type_meta.js`; every resource marked `'verified'`
+has a `sourceUrl`; the English and Spanish translation dictionaries have
+the same keys; every `t('key')` call in `app.js` resolves to a real key;
+and every onboarding question has a Spanish translation. It exits non-zero
+on any FAIL, so it can be wired into a CI step or a pre-deploy hook.
+
+It intentionally does **not** try to verify real-world facts (whether a
+phone number still rings) — that needs a human, not a script. See
+"How resource data should be reviewed" above for that process.
+
+**What this does not replace:** an actual test on a real low-end Android
+phone and a real screen reader (this repository has no headless-browser
+tooling available in the environment it was last edited in, so DOM/UI
+behavior was reviewed by code inspection and manual ID cross-checking
+against `index.html`, not by driving a real or headless browser). Before
+a production rollout, test manually: first launch, onboarding (both
+completed and skipped), English and Spanish, search, every category tab
+including Work, GPS granted/denied, neighborhood picker, offline mode
+(load once online, then turn off networking and reload), a service-worker
+update, favorites, visited, the planner, an appointment with calendar
+export, the document vault, and a screen reader pass (VoiceOver or
+TalkBack) through onboarding and a resource card.
+
+---
+
+## Deployment
+
+This is a static site — any static host works (GitHub Pages, Netlify,
+Cloudflare Pages, a plain nginx directory). There is no build step and no
+environment configuration.
+
+**Cache invalidation:** `sw.js` has a `CACHE` version string
+(`srf-vN`). Bump it whenever you change any file listed in `ASSETS` inside
+`sw.js` — this is still a manual step; see the comment in `sw.js` for why
+(a fully automatic content-hash cache-buster would need a build step,
+which this project deliberately doesn't have). Returning users get an
+in-app "Update available — Refresh now?" prompt instead of the update
+applying silently underneath an open tab.
+
+---
+
+
 
 ## Features
 
@@ -127,11 +310,19 @@ identity) reorders results to surface what's most relevant first — it
 never hides the general resource list, and can be skipped or redone at
 any time via the **Me** button.
 
-**Always-visible crisis bar.** 988, 211, the DV hotline, and the veterans
-line are one tap away from every screen, regardless of onboarding status.
+**Always-visible crisis bar + Emergency (SOS) mode.** 988, 211, the DV
+hotline, and the veterans line are one tap away from every screen,
+regardless of onboarding status. The red **SOS** button opens a
+zero-network, zero-image, large-tap-target screen with just those five
+numbers — built for the specific case of very low battery or very little
+time.
 
-**Severe weather mode.** The **Weather** button reprioritizes warming or
-cooling centers to the top of the list during cold snaps or heat waves.
+**Cold/Heat mode (manually set — not live weather).** The **Cold/Heat**
+button (formerly labeled "Weather") lets a person manually reprioritize
+warming or cooling centers to the top of the list. It is explicitly
+labeled as manual in the UI and in this doc: this app has no live weather
+data source, and does not claim to. See "What this app does NOT
+guarantee" below.
 
 **Works with no signal.** The service worker caches the whole app after
 first load. The resource list, filters, search, planner, vault, and
@@ -365,8 +556,11 @@ and what would need to be true before revisiting them.
   browser's `localStorage` and `IndexedDB` on the person's own device
 - Nothing is transmitted to any server operated by this project
 - The only outbound network calls this app makes on its own are: (1)
-  loading the app's own files, (2) an optional weather lookup, and (3)
-  standard `tel:`, `sms:`, and map links the person explicitly taps
+  loading the app's own files, and (2) standard `tel:`, `sms:`, and map
+  links the person explicitly taps. There is no weather API call — the
+  Cold/Heat mode is a manual, on-device toggle only (an earlier version of
+  this document incorrectly listed "an optional weather lookup" as a
+  network call; that was never accurate and has been corrected here).
 - Clearing browser data/site data on the device will permanently erase
   everything stored by this app — there is no cloud backup by design
 

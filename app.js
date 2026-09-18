@@ -5,44 +5,111 @@
     en: {
       appTitle: 'Seattle Resource Finder',
       appSub: 'Shelters · Meals · Showers · Medical · Housing',
-      searchPh: 'Search…', me: 'Me', area: 'Area', list: 'List', clear: 'Clear',
+      searchPh: 'Search… (e.g. "food tonight", "shelter with dog")', me: 'Me', area: 'Area', list: 'List', clear: 'Clear',
       skip: 'Skip', cont: 'Continue', finish: 'Finish', cancel: 'Cancel',
       useGps: 'Use GPS', close: 'Close', copy: 'Copy', save: 'Save',
       offline: 'You are offline — showing saved data',
-      callFirst: 'Call before you go — hours change',
-      disclaimer: 'Hours and beds change. Always call before you go. Dial 211 for live help.',
+      callFirst: 'Hours and availability can change — call to confirm before you go',
+      disclaimer: 'This is a curated offline guide, not a complete list of every service. Hours and beds change and are not live. Always call before you go. Dial <strong>211</strong> for live help with anything not listed here.',
       matched: 'resources matched to you', resources: 'resources',
       startHere: 'Start here — critical numbers', forYou: 'Resources for you',
-      noMatch: 'No matches. Try clearing search or updating your situation.',
-      weatherCold: 'Cold weather mode — warming centers prioritized',
-      weatherHeat: 'Heat mode — cooling centers prioritized',
+      noMatch: 'No matches in this offline guide — that does not mean no help exists.',
+      weatherCold: 'Cold mode ON (set by you, not live weather) — warming centers shown first',
+      weatherHeat: 'Heat mode ON (set by you, not live weather) — cooling centers shown first',
+      weatherBtnOff: 'Cold/Heat', weatherBtnCold: 'Cold mode', weatherBtnHeat: 'Heat mode',
+      weatherBtnTitle: 'Manually prioritize warming or cooling centers — this is not live weather data',
       nextSteps: 'Your best next steps',
-      hoodTitle: 'Where are you?', hoodHint: 'Rough area helps sort nearby resources.',
+      hoodTitle: 'Where are you?', hoodHint: 'Rough area helps sort nearby resources. This is approximate, not exact.',
       cheatTitle: 'My list', notePrivate: 'Private note on this device only.',
       crisis988: '988 Crisis', crisis211: '211 Help', crisisDV: 'DV Hotline', crisisVet: 'Vets 877',
-      navAll: 'All', navShelter: 'Shelter', navFood: 'Food', navHygiene: 'Hygiene', navHealth: 'Health'
+      navAll: 'All', navShelter: 'Shelter', navFood: 'Food', navHygiene: 'Hygiene', navHealth: 'Health', navWork: 'Work',
+      favLabel: 'Favorite', visitLabel: 'I was here today', callLabel: 'Call', mapLabel: 'Map', shareLabel: 'Share',
+      noteLabel: 'Note', scheduleLabel: 'Schedule a visit', removeLabel: 'Remove', toggleLangLabel: 'Toggle language',
+      moreOptionsLabel: 'More options', markCompleteLabel: 'Mark appointment complete', noFavorites: 'No favorites yet. Tap the heart on any resource to save it here.',
+      gpsUnavailable: 'GPS is not available on this device/browser. You can still pick a neighborhood instead.',
+      gpsFailed: 'Could not get your location. Pick a neighborhood instead — it still helps sort nearby resources.',
+      copied: 'Copied to your clipboard.',
+      copyManually: 'Could not copy automatically. Please select and copy the text manually.',
+      confirmOverwriteDay: 'already has a plan. Overwrite it with',
+      plansQ: '\u2019s plan?',
+      cancelledNoChange: 'Cancelled — nothing was changed.',
+      copiedTo: 'Copied to',
+      nothingToCopy: 'Nothing to copy.',
+      couldNotCopyDay: 'Could not copy.',
+      notifNotSupported: 'Reminders are not supported in this browser.',
+      notifOff: 'Notifications are off. Check the Home screen for today\u2019s plan instead.',
+      notifBlocked: 'Notifications are blocked in your browser settings.',
+      remindersOnBestEffort: 'Reminder set for today — best-effort only while this app stays open. For anything important, use "Add to calendar" instead.',
+      distanceApprox: 'straight-line distance, not walking or transit time',
+      statusApptRequired: 'Appointment required', statusWalkIn: 'Walk-in', statusReferral: 'Referral required',
+      statusCallConfirm: 'Call to confirm', statusPublished: 'Usually open — published hours', statusUnknown: 'Availability unknown',
+      dataReviewedLabel: 'Data last reviewed', unconfirmedLabel: 'Not independently verified — call before you go',
+      verifiedLabel: 'Checked against source', dvExit: 'Leave this screen quickly', dvExitConfirm: 'This will immediately leave the app and open a neutral page. Continue?',
+      ok: 'OK', updateAvailable: 'A new version of this app is ready.', updateNow: 'Refresh now', updateLater: 'Later',
+      removeVaultDocConfirm: 'Remove this document from your Vault? This cannot be undone.',
+      deleteAppointmentConfirm: 'Delete this appointment?',
+      vaultLabelPrompt: 'What is this document? (e.g. "ID card", "Birth certificate")',
+      vaultDefaultLabel: 'Document',
+      vaultSaveFailed: 'Could not save this document. Your device may be low on storage, or private/incognito mode may be blocking it. Nothing was saved — please try again or free up space.',
+      vaultDeleteFailed: 'Could not remove this document. Please try again.'
     },
     es: {
       appTitle: 'Recursos de Seattle',
       appSub: 'Albergues · Comidas · Duchas · Médico · Vivienda',
-      searchPh: 'Buscar…', me: 'Yo', area: 'Zona', list: 'Lista', clear: 'Borrar',
+      searchPh: 'Buscar… (ej. "comida hoy", "albergue con perro")', me: 'Yo', area: 'Zona', list: 'Lista', clear: 'Borrar',
       skip: 'Saltar', cont: 'Continuar', finish: 'Listo', cancel: 'Cancelar',
       useGps: 'Usar GPS', close: 'Cerrar', copy: 'Copiar', save: 'Guardar',
       offline: 'Sin conexión — mostrando datos guardados',
-      callFirst: 'Llama antes de ir — los horarios cambian',
-      disclaimer: 'Los horarios y camas cambian. Llama antes de ir. Marca 211 para ayuda en vivo.',
+      callFirst: 'Los horarios y la disponibilidad pueden cambiar — llama para confirmar antes de ir',
+      disclaimer: 'Esta es una guía curada sin conexión, no una lista completa de todos los servicios. Los horarios y camas cambian y no son en tiempo real. Llama antes de ir. Marca el <strong>211</strong> para ayuda en vivo con cualquier cosa que no esté aquí.',
       matched: 'recursos para ti', resources: 'recursos',
       startHere: 'Empieza aquí — números críticos', forYou: 'Recursos para ti',
-      noMatch: 'Sin resultados. Borra la búsqueda o actualiza tu situación.',
-      weatherCold: 'Modo frío — centros de calor prioritarios',
-      weatherHeat: 'Modo calor — centros de enfriamiento prioritarios',
+      noMatch: 'Sin resultados en esta guía sin conexión — eso no significa que no exista ayuda.',
+      weatherCold: 'Modo frío ACTIVADO (elegido por ti, no es clima en vivo) — se muestran primero los centros de calor',
+      weatherHeat: 'Modo calor ACTIVADO (elegido por ti, no es clima en vivo) — se muestran primero los centros de enfriamiento',
+      weatherBtnOff: 'Frío/Calor', weatherBtnCold: 'Modo frío', weatherBtnHeat: 'Modo calor',
+      weatherBtnTitle: 'Prioriza manualmente centros de calor o enfriamiento — esto no es información del clima en vivo',
       nextSteps: 'Tus mejores próximos pasos',
-      hoodTitle: '¿Dónde estás?', hoodHint: 'La zona ayuda a ordenar recursos cercanos.',
+      hoodTitle: '¿Dónde estás?', hoodHint: 'La zona ayuda a ordenar recursos cercanos. Esto es aproximado, no exacto.',
       cheatTitle: 'Mi lista', notePrivate: 'Nota privada solo en este dispositivo.',
       crisis988: '988 Crisis', crisis211: '211 Ayuda', crisisDV: 'Línea DV', crisisVet: 'Veteranos',
-      navAll: 'Todo', navShelter: 'Albergue', navFood: 'Comida', navHygiene: 'Higiene', navHealth: 'Salud'
+      navAll: 'Todo', navShelter: 'Albergue', navFood: 'Comida', navHygiene: 'Higiene', navHealth: 'Salud', navWork: 'Empleo',
+      favLabel: 'Favorito', visitLabel: 'Estuve aquí hoy', callLabel: 'Llamar', mapLabel: 'Mapa', shareLabel: 'Compartir',
+      noteLabel: 'Nota', scheduleLabel: 'Programar una visita', removeLabel: 'Eliminar', toggleLangLabel: 'Cambiar idioma',
+      moreOptionsLabel: 'Más opciones', markCompleteLabel: 'Marcar cita como completada', noFavorites: 'Aún no tienes favoritos. Toca el corazón en cualquier recurso para guardarlo aquí.',
+      gpsUnavailable: 'El GPS no está disponible en este dispositivo/navegador. Aún puedes elegir un vecindario.',
+      gpsFailed: 'No se pudo obtener tu ubicación. Elige un vecindario en su lugar — igual ayuda a ordenar recursos cercanos.',
+      copied: 'Copiado al portapapeles.',
+      copyManually: 'No se pudo copiar automáticamente. Selecciona y copia el texto manualmente.',
+      confirmOverwriteDay: 'ya tiene un plan. ¿Sobrescribirlo con el de',
+      plansQ: '?',
+      cancelledNoChange: 'Cancelado — no se cambió nada.',
+      copiedTo: 'Copiado a',
+      nothingToCopy: 'Nada que copiar.',
+      couldNotCopyDay: 'No se pudo copiar.',
+      notifNotSupported: 'Los recordatorios no son compatibles con este navegador.',
+      notifOff: 'Las notificaciones están desactivadas. Revisa la pantalla de inicio para ver el plan de hoy.',
+      notifBlocked: 'Las notificaciones están bloqueadas en la configuración de tu navegador.',
+      remindersOnBestEffort: 'Recordatorio activado para hoy — solo es un intento, funciona mientras esta app esté abierta. Para algo importante, usa "Agregar al calendario".',
+      distanceApprox: 'distancia en línea recta, no tiempo caminando ni en transporte',
+      statusApptRequired: 'Se requiere cita', statusWalkIn: 'Sin cita previa', statusReferral: 'Se requiere referencia',
+      statusCallConfirm: 'Llama para confirmar', statusPublished: 'Usualmente abierto — horario publicado', statusUnknown: 'Disponibilidad desconocida',
+      dataReviewedLabel: 'Datos revisados por última vez', unconfirmedLabel: 'No verificado de forma independiente — llama antes de ir',
+      verifiedLabel: 'Verificado contra la fuente', dvExit: 'Salir rápidamente de esta pantalla', dvExitConfirm: 'Esto saldrá inmediatamente de la app y abrirá una página neutral. ¿Continuar?',
+      ok: 'Aceptar', updateAvailable: 'Hay una nueva versión de esta app lista.', updateNow: 'Actualizar ahora', updateLater: 'Más tarde',
+      removeVaultDocConfirm: '¿Eliminar este documento de tu Bóveda? Esto no se puede deshacer.',
+      deleteAppointmentConfirm: '¿Eliminar esta cita?',
+      vaultLabelPrompt: '¿Qué documento es? (ej. "Identificación", "Acta de nacimiento")',
+      vaultDefaultLabel: 'Documento',
+      vaultSaveFailed: 'No se pudo guardar este documento. Tu dispositivo puede tener poco almacenamiento, o el modo privado/incógnito puede estar bloqueándolo. No se guardó nada — intenta de nuevo o libera espacio.',
+      vaultDeleteFailed: 'No se pudo eliminar este documento. Intenta de nuevo.'
     }
   };
+
+  // Single source of truth for the app's "as of" review date, shown in the
+  // disclaimer / More panel so people (and maintainers) know how fresh the
+  // resource data is. Update this whenever seattle_data.js is reviewed.
+  var DATA_LAST_REVIEWED = '2026-08-29';
 
   var NEIGHBORHOODS = [
     { id: 'downtown', label: 'Downtown / Pioneer Square', lat: 47.603, lon: -122.332 },
@@ -403,6 +470,204 @@
    * Returns null when there is nothing useful to suggest (no unmet need, or an unmet
    * need with no matching resource type) — never a fabricated or low-confidence guess.
    */
+  // ---------- Next-Step engine (deterministic, ungated, no LLM) ----------
+  // This is deliberately separate from the Level-3 "Smart Day Plan" / planner-based
+  // suggestion above: that one is opt-in and tied to the planner + progress system.
+  // This one is always available to everyone from first launch (per "never gate
+  // survival resources"), takes a plain need, and returns ONE clear next step plus
+  // an honest fallback — the "NEXT ACTION CARD" concept.
+  var NEED_TO_TYPES = {
+    shelter: ['shelter', 'village', 'safeparking'],
+    food: ['meal', 'foodbank'],
+    hygiene: ['shower', 'daycenter'],
+    medical: ['medical', 'dental', 'mentalhealth', 'recovery'],
+    housing: ['housinghelp'],
+    transportation: ['transport'],
+    documents: ['documents', 'benefits', 'legal'],
+    employment: ['work'],
+    dv: ['system'],
+    youth: ['shelter', 'daycenter', 'housinghelp'],
+    family: ['shelter', 'housinghelp'],
+    veteran: ['housinghelp', 'system'],
+    pet: ['shelter', 'daycenter'],
+    weather: ['warming']
+  };
+
+  // Confidence/trust ranking used only to break ties and order candidates — never
+  // hidden from the person (the badge on the eventual card shows the same signal).
+  function trustRank(r) {
+    return r.verificationStatus === 'verified' ? 2 : 1; // 'unconfirmed' and anything else = 1
+  }
+  function accessibilityRank(r) {
+    // Known walk-in or known appointment-required both beat total uncertainty —
+    // knowing what to expect is itself useful, regardless of which one it is.
+    if (r.walkIn === true || r.appointmentRequired === true || r.referralRequired === true) return 2;
+    return 1;
+  }
+  function eligibilityRank(r, constraints) {
+    var score = 0;
+    var tags = r.tags || [];
+    if (constraints.pet && tags.indexOf('pet') !== -1) score += 3;
+    if (constraints.hasKids && (tags.indexOf('family') !== -1 || tags.indexOf('hasKids') !== -1)) score += 3;
+    if (constraints.veteran && tags.indexOf('veteran') !== -1) score += 3;
+    if (constraints.youth && tags.indexOf('youth') !== -1) score += 3;
+    if (constraints.dv && tags.indexOf('dv') !== -1) score += 3;
+    if (constraints.native && tags.indexOf('native') !== -1) score += 3;
+    // A resource that specifically excludes what the person needs never wins on
+    // eligibility grounds, but is not removed outright — the person can still see
+    // and choose it; this app doesn't have reliable enough per-resource exclusion
+    // data to safely hide options rather than merely de-prioritize them.
+    return score;
+  }
+  // How many of the person's stated constraints actually matter for this need
+  // (i.e. would move the score) — used below to decide whether a match is
+  // confident or whether the engine should admit it can't tell.
+  function relevantConstraintCount(constraints) {
+    return ['pet', 'hasKids', 'veteran', 'youth', 'dv', 'native'].filter(function (k) { return !!constraints[k]; }).length;
+  }
+  function scoreResource(r, constraints) {
+    // Priority order, high to low: safety/urgency, eligibility match, accessibility
+    // clarity, trust/freshness, geographic proximity. Distance is deliberately last
+    // and contributes the smallest weight — see "NEAREST must not mean BEST".
+    var safety = (r.type === 'system') ? 10 : 0;
+    var elig = eligibilityRank(r, constraints);
+    var access = accessibilityRank(r);
+    var trust = trustRank(r);
+    var dist = (constraints.userLat != null && r.lat != null) ? distMiles(constraints.userLat, constraints.userLon, r.lat, r.lon) : 9999;
+    // Distance folded in as a small tiebreaker: up to ~2 points, shrinking as
+    // distance grows, so it can only ever nudge between otherwise-similar options.
+    var distScore = Math.max(0, 2 - dist / 10);
+    return safety * 100 + elig * 10 + access * 5 + trust * 3 + distScore;
+  }
+
+  /**
+   * Returns a Next-Step result for a plain-language need key, or null if this
+   * curated dataset genuinely has nothing for it — callers must render the 211
+   * fallback in that case, never "no help exists" (see NO_MATCH copy elsewhere).
+   * constraints: { pet, hasKids, veteran, youth, dv, native, userLat, userLon }
+   */
+  function getNextStepForNeed(needKey, constraints) {
+    constraints = constraints || {};
+    if (constraints.userLat === undefined) { constraints.userLat = userLat; constraints.userLon = userLon; }
+    var types = NEED_TO_TYPES[needKey];
+    if (!types || !types.length || typeof SEATTLE_RESOURCES === 'undefined') return null;
+    var candidates = SEATTLE_RESOURCES.filter(function (r) { return types.indexOf(r.type) !== -1; }).map(normalizeResource);
+    if (!candidates.length) return null;
+    candidates.sort(function (a, b) { return scoreResource(b, constraints) - scoreResource(a, constraints); });
+    var top = candidates[0];
+    var alt = candidates.length > 1 ? candidates[1] : null;
+
+    var reasons = [];
+    var tags = top.tags || [];
+    var matchedConstraint = false;
+    if (constraints.pet && tags.indexOf('pet') !== -1) { reasons.push(lang === 'es' ? 'Acepta mascotas' : 'Accepts pets'); matchedConstraint = true; }
+    if (constraints.hasKids && (tags.indexOf('family') !== -1 || tags.indexOf('hasKids') !== -1)) { reasons.push(lang === 'es' ? 'Acepta familias' : 'Accepts families'); matchedConstraint = true; }
+    if (constraints.veteran && tags.indexOf('veteran') !== -1) { reasons.push(lang === 'es' ? 'Específico para veteranos' : 'Veteran-specific'); matchedConstraint = true; }
+    if (constraints.youth && tags.indexOf('youth') !== -1) { reasons.push(lang === 'es' ? 'Específico para jóvenes' : 'Youth-specific'); matchedConstraint = true; }
+    if (constraints.dv && tags.indexOf('dv') !== -1) { reasons.push(lang === 'es' ? 'Servicio confidencial' : 'Confidential service'); matchedConstraint = true; }
+    if (constraints.native && tags.indexOf('native') !== -1) { reasons.push(lang === 'es' ? 'Programa cultural específico' : 'Culturally-specific program'); matchedConstraint = true; }
+    var badge = resourceStatusBadge(top);
+    reasons.push(t(badge.key));
+    reasons.push(top.verificationStatus === 'verified' ? t('verifiedLabel') : t('unconfirmedLabel'));
+
+    // Conservative-uncertainty guard: if the person told us something that
+    // matters for this need (has a pet, has kids, is a veteran, etc.) and the
+    // top-ranked resource doesn't actually match on any of it, this is NOT a
+    // confident recommendation — it's just the best of an uninformative set.
+    // Say so plainly rather than presenting it with false confidence, per the
+    // product principle: never pretend to know more than the data supports.
+    var relevantCount = relevantConstraintCount(constraints);
+    var uncertain = relevantCount > 0 && !matchedConstraint;
+
+    return {
+      needKey: needKey,
+      resource: top,
+      alternate: alt,
+      reasons: reasons,
+      uncertain: uncertain,
+      distanceMiles: (constraints.userLat != null && top.lat != null) ? distMiles(constraints.userLat, constraints.userLon, top.lat, top.lon) : null
+    };
+  }
+
+  // Renders the "NEXT ACTION CARD" — deliberately short: what, best next step,
+  // why (max ~3 reasons), before-you-go caveat, and an explicit failure path to
+  // an alternate resource or 211. Never more text than fits one glance.
+  function renderNextStepCard(needKey) {
+    var labels = {
+      shelter: { en: 'A place to sleep tonight', es: 'Un lugar para dormir esta noche' },
+      food: { en: 'Food', es: 'Comida' }, hygiene: { en: 'A shower', es: 'Una ducha' },
+      medical: { en: 'Medical care', es: 'Atención médica' }, housing: { en: 'Housing help', es: 'Ayuda de vivienda' },
+      transportation: { en: 'Transportation', es: 'Transporte' }, documents: { en: 'ID / documents', es: 'Identificación / documentos' },
+      employment: { en: 'Work', es: 'Trabajo' }, dv: { en: 'A confidential safe place', es: 'Un lugar seguro y confidencial' },
+      youth: { en: 'Youth services', es: 'Servicios para jóvenes' }, family: { en: 'Family shelter', es: 'Albergue familiar' },
+      veteran: { en: 'Veteran services', es: 'Servicios para veteranos' }, pet: { en: 'Shelter with a pet', es: 'Albergue con mascota' },
+      weather: { en: 'Warming/cooling center', es: 'Centro de calor/frío' }
+    };
+    var constraints = { pet: !!(profile && profile.pet), hasKids: !!(profile && profile.hasKids), veteran: !!(profile && profile.veteran), youth: !!(profile && profile.ageGroup === 'youth'), dv: !!(profile && profile.dv), native: !!(profile && profile.native) };
+    var result = getNextStepForNeed(needKey, constraints);
+    var lbl = (labels[needKey] && labels[needKey][lang]) || needKey;
+    var el = $('nextStepResult');
+    if (!el) return;
+    if (!result) {
+      el.innerHTML = '<div class="empty">' + escapeHtml(t('noMatch')) +
+        '<div style="margin-top:10px"><a class="call" href="tel:211">' + escapeHtml(t('crisis211')) + '</a></div></div>';
+      return;
+    }
+    var r = result.resource;
+    var call = phoneHref(r.phone);
+    var whatNext = (call ? ('<a class="call" href="' + call + '">' + escapeHtml(t('callLabel')) + ' ' + escapeHtml(r.phone) + '</a>') :
+      '<div class="meta">' + escapeHtml(r.phone || '') + '</div>');
+    var fallbackHtml = (result.alternate)
+      ? ('<div class="meta">' + escapeHtml(lang === 'es' ? 'Si no funciona:' : 'If that doesn\u2019t work:') + ' ' + escapeHtml(result.alternate.name) +
+         (phoneHref(result.alternate.phone) ? (' \u2014 <a class="call" href="' + phoneHref(result.alternate.phone) + '">' + escapeHtml(t('callLabel')) + '</a>') : '') + '</div>')
+      : '';
+    var uncertainHtml = result.uncertain
+      ? ('<div class="call-first" style="background:#78350f;color:#fef3c7">' +
+         escapeHtml(lang === 'es'
+           ? 'No se pudo determinar con confianza la mejor coincidencia para tu situación específica a partir de la información disponible. Esto es la opción general más cercana, no una coincidencia confirmada.'
+           : 'Best match for your specific situation can\u2019t be confidently determined from the information available. This is the closest general option, not a confirmed match.') +
+         '</div>')
+      : '';
+    el.innerHTML =
+      '<div class="card system">' +
+      '<div class="meta" style="text-transform:uppercase;font-size:.7rem;letter-spacing:.05em;color:var(--muted)">' + escapeHtml(lang === 'es' ? 'NECESITAS' : 'YOU NEED') + '</div>' +
+      '<h2 style="margin:2px 0 8px">' + escapeHtml(lbl) + '</h2>' +
+      uncertainHtml +
+      '<div class="meta" style="text-transform:uppercase;font-size:.7rem;letter-spacing:.05em;color:var(--muted);margin-top:6px">' + escapeHtml(lang === 'es' ? 'MEJOR PRÓXIMO PASO' : 'BEST NEXT STEP') + '</div>' +
+      '<div style="font-weight:800;font-size:1.05rem">' + escapeHtml(r.name) + '</div>' +
+      (r.addr ? '<div class="meta">' + escapeHtml(r.addr) + '</div>' : '') +
+      '<div class="meta" style="text-transform:uppercase;font-size:.7rem;letter-spacing:.05em;color:var(--muted);margin-top:6px">' + escapeHtml(lang === 'es' ? 'POR QUÉ' : 'WHY') + '</div>' +
+      '<div class="flags">' + result.reasons.map(function (rs) { return '<span class="flag tag">' + escapeHtml(rs) + '</span>'; }).join('') + '</div>' +
+      '<div class="actions" style="margin-top:8px">' + whatNext + '</div>' +
+      '<div class="call-first" style="margin-top:8px">' + escapeHtml(lang === 'es' ? 'ANTES DE IR: ' : 'BEFORE YOU GO: ') + escapeHtml(t('callFirst')) + '</div>' +
+      '<div class="meta" style="text-transform:uppercase;font-size:.7rem;letter-spacing:.05em;color:var(--muted);margin-top:6px">' + escapeHtml(lang === 'es' ? 'SI NO FUNCIONA' : 'IF THAT DOESN\u2019T WORK') + '</div>' +
+      (fallbackHtml || ('<div class="meta">' + escapeHtml(lang === 'es' ? 'Llama al ' : 'Call ') + '211.</div>')) +
+      '<div class="actions" style="margin-top:4px"><a class="call" href="tel:211">' + escapeHtml(t('crisis211')) + '</a></div>' +
+      '</div>';
+  }
+
+  function renderNeedPicker() {
+    var el = $('nextStepPicker');
+    if (!el) return;
+    var needs = [
+      ['shelter', '\uD83C\uDF19'], ['food', '\uD83C\uDF72'], ['hygiene', '\uD83D\uDEBF'], ['medical', '\u2695\uFE0F'],
+      ['housing', '\uD83D\uDD11'], ['documents', '\uD83E\uDEAA'], ['employment', '\uD83D\uDCB5'], ['transportation', '\uD83D\uDE8C'],
+      ['dv', '\uD83D\uDEE1\uFE0F'], ['veteran', '\uD83C\uDF96\uFE0F'], ['youth', '\uD83E\uDDD2'], ['pet', '\uD83D\uDC3E'], ['weather', '\uD83D\uDD25']
+    ];
+    var labels = { shelter: 'navShelter', food: 'navFood', hygiene: 'navHygiene', medical: 'navHealth', employment: 'navWork' };
+    el.innerHTML = needs.map(function (n) {
+      var key = n[0], icon = n[1];
+      var text = labels[key] ? t(labels[key]) : key;
+      return '<button type="button" class="btn btn-ghost" data-need="' + key + '" style="font-size:.75rem;padding:8px 10px;min-height:36px">' + icon + ' ' + escapeHtml(text) + '</button>';
+    }).join('');
+    var btns = el.querySelectorAll('[data-need]');
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener('click', (function (key) {
+        return function () { renderNextStepCard(key); };
+      })(btns[i].getAttribute('data-need')));
+    }
+  }
+
   function getNextBestAction(context) {
     context = context || {};
     var today = (context.todayOverride != null) ? context.todayOverride : new Date().getDay();
@@ -654,6 +919,126 @@
     });
   }
 
+  // ---------- In-app alert/confirm (replaces native alert()/confirm()) ----------
+  // Native browser dialogs can't be styled or localized and look jarring next to the
+  // rest of this app's UI. These reuse the existing overlay/sheet pattern instead.
+  //
+  // Serialization guard: there is exactly one appAlertOverlay in the DOM, shared by
+  // showAlert/showConfirm/showPrompt. Without this queue, a call that fires from a
+  // background event (e.g. the service-worker "update available" prompt, which can
+  // arrive at any time regardless of what the person is doing) could silently
+  // overwrite an already-open dialog's text/buttons — orphaning the first dialog's
+  // promise forever and making the person unknowingly answer a different question
+  // than the one they're looking at. Found during a Phase 3 adversarial re-audit;
+  // not caught in the original Phase 2 pass. Every show*() call now waits its turn.
+  var dialogQueue = Promise.resolve();
+  function queueDialog(showFn) {
+    var result = dialogQueue.then(showFn);
+    dialogQueue = result.catch(function () {}); // one dialog failing must never jam the queue for the rest
+    return result;
+  }
+  function showAlert(msg) {
+    return queueDialog(function () { return showAlertNow(msg); });
+  }
+  function showConfirm(msg) {
+    return queueDialog(function () { return showConfirmNow(msg); });
+  }
+  function showPrompt(msg, defaultValue) {
+    return queueDialog(function () { return showPromptNow(msg, defaultValue); });
+  }
+  function showAlertNow(msg) {
+    return new Promise(function (resolve) {
+      var overlay = $('appAlertOverlay');
+      if (!overlay) { window.alert(msg); resolve(); return; } // defensive fallback
+      $('appAlertMsg').textContent = msg;
+      if ($('appAlertInput')) $('appAlertInput').style.display = 'none'; // reset any leftover showPrompt() state
+      var actions = $('appAlertActions');
+      actions.innerHTML = '<button class="btn btn-accent" id="appAlertOk" type="button">' + escapeHtml(t('ok')) + '</button>';
+      overlay.style.display = 'flex';
+      $('appAlertOk').focus();
+      $('appAlertOk').addEventListener('click', function handler() {
+        overlay.style.display = 'none';
+        $('appAlertOk').removeEventListener('click', handler);
+        resolve();
+      });
+    });
+  }
+  function showConfirmNow(msg) {
+    return new Promise(function (resolve) {
+      var overlay = $('appAlertOverlay');
+      if (!overlay) { resolve(window.confirm(msg)); return; } // defensive fallback
+      $('appAlertMsg').textContent = msg;
+      if ($('appAlertInput')) $('appAlertInput').style.display = 'none'; // reset any leftover showPrompt() state
+      var actions = $('appAlertActions');
+      actions.innerHTML =
+        '<button class="btn btn-ghost" id="appAlertCancel" type="button">' + escapeHtml(t('cancel')) + '</button>' +
+        '<button class="btn btn-accent" id="appAlertOk" type="button">' + escapeHtml(t('ok')) + '</button>';
+      overlay.style.display = 'flex';
+      $('appAlertOk').focus();
+      function cleanup(result) {
+        overlay.style.display = 'none';
+        resolve(result);
+      }
+      $('appAlertOk').addEventListener('click', function () { cleanup(true); }, { once: true });
+      $('appAlertCancel').addEventListener('click', function () { cleanup(false); }, { once: true });
+    });
+  }
+  // Text-input variant of the same in-app dialog — replaces native prompt().
+  // Returns a Promise resolving to the trimmed string, or null if the person
+  // cancelled (never silently substitutes a default on Cancel — only an
+  // explicit OK with empty text falls back to the caller's default).
+  function showPromptNow(msg, defaultValue) {
+    return new Promise(function (resolve) {
+      var overlay = $('appAlertOverlay');
+      var input = $('appAlertInput');
+      if (!overlay || !input) { resolve(window.prompt(msg, defaultValue || '')); return; } // defensive fallback
+      $('appAlertMsg').textContent = msg;
+      input.value = defaultValue || '';
+      input.style.display = 'block';
+      var actions = $('appAlertActions');
+      actions.innerHTML =
+        '<button class="btn btn-ghost" id="appAlertCancel" type="button">' + escapeHtml(t('cancel')) + '</button>' +
+        '<button class="btn btn-accent" id="appAlertOk" type="button">' + escapeHtml(t('ok')) + '</button>';
+      overlay.style.display = 'flex';
+      input.focus();
+      function cleanup(result) {
+        input.style.display = 'none';
+        overlay.style.display = 'none';
+        resolve(result);
+      }
+      $('appAlertOk').addEventListener('click', function () { cleanup(input.value.trim()); }, { once: true });
+      $('appAlertCancel').addEventListener('click', function () { cleanup(null); }, { once: true });
+      input.addEventListener('keydown', function onKey(e) {
+        if (e.key === 'Enter') { e.preventDefault(); input.removeEventListener('keydown', onKey); $('appAlertOk').click(); }
+      });
+    });
+  }
+
+  // ---------- DV quick exit ----------
+  // Standard domestic-violence-site pattern: immediately replace this tab's history
+  // entry with a neutral page, so a "back" button press can't reveal this app was
+  // open. Only wired to the DV onboarding question itself (not shown globally),
+  // per the goal of not permanently signaling "this phone has DV content" to anyone
+  // who might later pick up the device.
+  function quickExit() {
+    try { window.location.replace('https://www.weather.gov'); } catch (e) { window.location.href = 'https://www.weather.gov'; }
+  }
+
+  // ---------- Emergency / low-battery mode ----------
+  // Pure DOM, zero network calls, zero images — the fastest possible path to the
+  // handful of numbers that matter most when someone has minutes of battery left.
+  function renderEmergency() {
+    var items = [
+      { label: '911 — ' + (lang === 'es' ? 'Emergencia que amenaza la vida' : 'Life-threatening emergency'), href: 'tel:911' },
+      { label: t('crisis211') + ' — ' + (lang === 'es' ? 'Todas las necesidades básicas' : 'All basic needs'), href: 'tel:211' },
+      { label: '988 — ' + (lang === 'es' ? 'Crisis / suicidio' : 'Crisis / suicide'), href: 'tel:988' },
+      { label: t('crisisDV') + ' — 1-877-737-0242', href: 'tel:18777370242' },
+      { label: t('crisisVet') + ' — 1-877-424-3838', href: 'tel:18774243838' }
+    ];
+    $('emergencyList').innerHTML = items.map(function (i) {
+      return '<a href="' + i.href + '" style="display:block;text-align:center;font-size:1.1rem;padding:14px;background:#7f1d1d;border-radius:12px;color:#fff;font-weight:800">' + escapeHtml(i.label) + '</a>';
+    }).join('');
+  }
   function distMiles(lat1, lon1, lat2, lon2) {
     if (lat1 == null || lat2 == null) return 9999;
     var R = 3958.8;
@@ -678,8 +1063,85 @@
     return null;
   }
   function mapsHref(addr) {
-    if (!addr || /phone|multiple|citywide|confirm|varies|confidential/i.test(addr)) return null;
-    return 'https://maps.apple.com/?q=' + encodeURIComponent(addr);
+    if (!addr || /phone|multiple|citywide|confirm|varies|confidential|not published|given at intake|call the access line/i.test(addr)) return null;
+    // Google Maps' web search URL works reliably in any mobile browser (Android
+    // Chrome, budget-phone browsers, and iOS Safari alike) without needing the
+    // Apple Maps app installed — more universal than an apple.com link for a
+    // majority-Android low-cost-phone audience.
+    return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(addr);
+  }
+
+  // ---------- Resource status badge (standardized vocabulary) ----------
+  // Heuristic, deterministic, and honest: it only ever downgrades to "call to
+  // confirm" or "unknown" rather than upgrading to a stronger claim than the
+  // data supports. Never claims a resource is open right now — this app has
+  // no live availability feed (see README "What this app does NOT guarantee").
+  function resourceStatusBadge(r) {
+    if (r.appointmentRequired === true) return { key: 'statusApptRequired', cls: 'id' };
+    if (r.referralRequired === true) return { key: 'statusReferral', cls: 'id' };
+    if (r.walkIn === true) return { key: 'statusWalkIn', cls: 'low' };
+    var notes = ((r.notes || '') + ' ' + (r.hours || '')).toLowerCase();
+    if (/appointment only|appointment-only|by appointment|call to screen|call for appointment|screen(ing)? call/.test(notes)) {
+      return { key: 'statusApptRequired', cls: 'id' };
+    }
+    if (/referral only|referral required|referred by/.test(notes)) {
+      return { key: 'statusReferral', cls: 'id' };
+    }
+    if (/walk-?in/.test(notes)) {
+      return { key: 'statusWalkIn', cls: 'low' };
+    }
+    if (/call ahead|call first|call to confirm|call before|see individual|confirm|varies/.test(notes)) {
+      return { key: 'statusCallConfirm', cls: 'tag' };
+    }
+    if (r.hours && r.hours.trim()) {
+      return { key: 'statusPublished', cls: 'tag' };
+    }
+    return { key: 'statusUnknown', cls: 'tag' };
+  }
+
+  // Fills in honest defaults for the new trust/provenance schema fields when a
+  // resource entry doesn't set them explicitly. This is applied at render time
+  // — it never mutates seattle_data.js — so "no verifiedAt" always and only
+  // ever means "shown as unconfirmed," never silently treated as verified.
+  function normalizeResource(r) {
+    if (!r) return r;
+    if (r.verificationStatus === undefined) r.verificationStatus = 'unconfirmed';
+    return r;
+  }
+
+  // ---------- Search synonyms (deterministic, offline, no backend) ----------
+  // Maps common plain-language terms a person might actually type to the
+  // resource `type` values they should match, layered on top of the existing
+  // substring search over name/notes/addr/type/tags (search() below still runs
+  // the literal query too, so this only ever widens results, never narrows).
+  var SEARCH_SYNONYMS = {
+    dog: ['pets'], cat: ['pets'], pet: ['pets'],
+    doctor: ['medical'], nurse: ['medical'], sick: ['medical'], clinic: ['medical'],
+    teeth: ['dental'], dentist: ['dental'],
+    therapy: ['mentalhealth'], counseling: ['mentalhealth'], depressed: ['mentalhealth'], anxiety: ['mentalhealth'],
+    bus: ['transport'], orca: ['transport'], ride: ['transport'],
+    phone: ['charging'], charge: ['charging'], wifi: ['charging'], internet: ['charging'],
+    id: ['documents'], identification: ['documents'], birth: ['documents'],
+    job: ['work'], jobs: ['work'], employment: ['work'], hire: ['work'], labor: ['work'],
+    housing: ['housinghelp'], apartment: ['housinghelp'], rent: ['housinghelp'],
+    lawyer: ['legal'], court: ['legal'],
+    money: ['benefits'], cash: ['benefits'], snap: ['benefits'], foodstamps: ['benefits'],
+    laundry: ['shower'], wash: ['shower'], hygiene: ['shower'],
+    hungry: ['meal', 'foodbank'], food: ['meal', 'foodbank'], eat: ['meal', 'foodbank'],
+    sleep: ['shelter', 'village'], bed: ['shelter', 'village'], night: ['shelter', 'village'],
+    car: ['safeparking'], van: ['safeparking'], rv: ['safeparking'],
+    cold: ['warming'], hot: ['warming'], heat: ['warming'],
+    detox: ['recovery'], sober: ['recovery'], addiction: ['recovery'],
+    mail: ['mail'], locker: ['storage'], library: ['library'], book: ['library']
+  };
+  function expandSearchTypes(q) {
+    var words = q.split(/\s+/);
+    var types = {};
+    words.forEach(function (w) {
+      var syn = SEARCH_SYNONYMS[w];
+      if (syn) syn.forEach(function (t) { types[t] = true; });
+    });
+    return Object.keys(types);
   }
   function smsShareBody(r) {
     return [r.name, r.addr, r.phone, r.hours].filter(Boolean).join('\n');
@@ -726,7 +1188,7 @@
     $('btnNeighborhood').textContent = t('area');
     $('btnCheat').textContent = t('list');
     $('btnResetFilters').textContent = t('clear');
-    $('disclaimer').innerHTML = t('disclaimer');
+    $('disclaimer').innerHTML = t('disclaimer') + ' <span style="opacity:.75">(' + t('dataReviewedLabel') + ': ' + DATA_LAST_REVIEWED + ')</span>';
     $('offlineBanner').textContent = t('offline');
     $('crisis988').textContent = t('crisis988');
     $('crisis211').textContent = t('crisis211');
@@ -735,30 +1197,42 @@
     $('obSkip').textContent = t('skip');
     $('hoodCancel').textContent = t('cancel');
     $('hoodGeo').textContent = t('useGps');
+    $('hoodTitle').textContent = t('hoodTitle');
+    $('hoodHint').textContent = t('hoodHint');
     $('cheatClose').textContent = t('close');
     $('cheatCopy').textContent = t('copy');
+    $('cheatTitle').textContent = t('cheatTitle');
+    $('noteHint').textContent = t('notePrivate');
     $('noteCancel').textContent = t('cancel');
     $('noteSave').textContent = t('save');
     $('btnLang').textContent = lang === 'en' ? 'ES' : 'EN';
-    var map = { all: 'navAll', shelter: 'navShelter', meal: 'navFood', shower: 'navHygiene', medical: 'navHealth' };
+    $('btnLang').setAttribute('aria-label', t('toggleLangLabel'));
+    $('btnMore').setAttribute('aria-label', t('moreOptionsLabel'));
+    if ($('btnEmergency')) $('btnEmergency').setAttribute('title', lang === 'es' ? 'Números de emergencia' : 'Emergency numbers');
+    var map = { all: 'navAll', shelter: 'navShelter', meal: 'navFood', shower: 'navHygiene', medical: 'navHealth', work: 'navWork' };
     document.querySelectorAll('nav.bottom button').forEach(function (btn) {
       var label = btn.querySelector('.nav-label');
       if (label && map[btn.dataset.view]) label.textContent = t(map[btn.dataset.view]);
     });
     updateWeatherBanner();
+    renderNeedPicker();
   }
 
   function updateWeatherBanner() {
     var el = $('weatherBanner');
+    var btn = $('btnWeather');
     if (weatherMode === 'cold') {
       el.className = 'weather-banner on';
       el.textContent = t('weatherCold');
+      if (btn) { btn.textContent = t('weatherBtnCold'); btn.title = t('weatherBtnTitle'); }
     } else if (weatherMode === 'heat') {
       el.className = 'weather-banner on heat';
       el.textContent = t('weatherHeat');
+      if (btn) { btn.textContent = t('weatherBtnHeat'); btn.title = t('weatherBtnTitle'); }
     } else {
       el.className = 'weather-banner';
       el.textContent = '';
+      if (btn) { btn.textContent = t('weatherBtnOff'); btn.title = t('weatherBtnTitle'); }
     }
   }
 
@@ -955,7 +1429,9 @@
     var notesMap = loadNotes();
     var localNote = notesMap[r.id];
     var d = (userLat != null && r.lat != null) ? distMiles(userLat, userLon, r.lat, r.lon) : null;
-    var distStr = (d != null && d < 9000) ? ' · ~' + (d < 10 ? d.toFixed(1) : Math.round(d)) + ' mi' : '';
+    // "mi" here is always straight-line distance (see distMiles()), never a route or
+    // walking-time estimate — the app has no travel-time data (see README "Leave By").
+    var distStr = (d != null && d < 9000) ? ' · ~' + (d < 10 ? d.toFixed(1) : Math.round(d)) + ' mi (straight-line)' : '';
     var flagHtml = flags.map(function (f) { return '<span class="flag ' + f.cls + '">' + f.text + '</span>'; }).join('');
     if (boost) flagHtml += '<span class="flag boost">For you</span>';
     (r.tags || []).forEach(function (tg) {
@@ -981,28 +1457,35 @@
       }
     }
 
+    var badge = resourceStatusBadge(r);
+    var badgeHtml = '<div class="call-first">' + escapeHtml(t(badge.key)) + ' \u00B7 ' + escapeHtml(t('callFirst')) + '</div>';
+    var trustHtml = (r.verificationStatus === 'verified')
+      ? '<div class="meta" style="color:var(--accent2)">\u2713 ' + escapeHtml(t('verifiedLabel')) + (r.verifiedAt ? ' (' + escapeHtml(r.verifiedAt) + ')' : '') + '</div>'
+      : '';
+
     return '<article class="card' + (r.type === 'system' ? ' system' : '') + (boost ? ' boosted' : '') + '" data-id="' + r.id + '">' +
       '<div class="card-top"><span class="icon" aria-hidden="true">' + iconFor(r) + '</span><div style="flex:1;min-width:0">' +
       '<h2>' + escapeHtml(r.name) + '</h2>' +
-      '<div class="meta">' + labelFor(r) + (r.hours ? ' · ' + escapeHtml(r.hours) : '') + distStr + '</div>' +
+      '<div class="meta">' + escapeHtml(typeLabel(r.type, lang)) + (r.hours ? ' · ' + escapeHtml(r.hours) : '') + distStr + '</div>' +
       (r.addr ? '<div class="meta">' + escapeHtml(r.addr) + '</div>' : '') +
       (r.pay ? '<div class="meta pay-line">\uD83D\uDCB0 ' + escapeHtml(r.pay) + '</div>' : '') +
+      trustHtml +
       workedBeforeHtml +
       '</div>' +
       '<div class="card-icon-actions">' +
-      '<button type="button" class="icon-toggle fav' + (isFav ? ' on' : '') + '" data-fav="' + r.id + '" aria-label="Favorite" aria-pressed="' + isFav + '">' + (isFav ? '\u2665' : '\u2661') + '</button>' +
-      '<button type="button" class="icon-toggle visit' + (visited ? ' on' : '') + '" data-visit="' + r.id + '" aria-label="I was here today" aria-pressed="' + visited + '">' + (visited ? '\u2713' : '\u25CB') + '</button>' +
+      '<button type="button" class="icon-toggle fav' + (isFav ? ' on' : '') + '" data-fav="' + r.id + '" aria-label="' + escapeHtml(t('favLabel')) + '" aria-pressed="' + isFav + '">' + (isFav ? '\u2665' : '\u2661') + '</button>' +
+      '<button type="button" class="icon-toggle visit' + (visited ? ' on' : '') + '" data-visit="' + r.id + '" aria-label="' + escapeHtml(t('visitLabel')) + '" aria-pressed="' + visited + '">' + (visited ? '\u2713' : '\u25CB') + '</button>' +
       '</div></div>' +
       (r.notes ? '<p class="notes">' + escapeHtml(r.notes) + '</p>' : '') +
-      '<div class="call-first">' + t('callFirst') + '</div>' +
+      badgeHtml +
       (flagHtml ? '<div class="flags">' + flagHtml + '</div>' : '') +
       (localNote ? '<div class="local-note">Note: ' + escapeHtml(localNote.text) + '</div>' : '') +
       '<div class="actions">' +
-      (call ? '<a class="call" href="' + call + '" aria-label="Call">Call</a>' : '') +
-      (dir ? '<a class="dir" href="' + dir + '" target="_blank" rel="noopener" aria-label="Map">Map</a>' : '') +
-      '<a class="share" href="' + shareHref + '" aria-label="Share">Share</a>' +
-      '<button type="button" class="note-btn" data-note="' + r.id + '" aria-label="Note">Note</button>' +
-      (r.type !== 'system' ? '<button type="button" class="note-btn" data-schedule="' + r.id + '" aria-label="Schedule a visit">\uD83D\uDCC6 Schedule</button>' : '') +
+      (call ? '<a class="call" href="' + call + '" aria-label="' + escapeHtml(t('callLabel')) + '">' + escapeHtml(t('callLabel')) + '</a>' : '') +
+      (dir ? '<a class="dir" href="' + dir + '" target="_blank" rel="noopener noreferrer" aria-label="' + escapeHtml(t('mapLabel')) + '">' + escapeHtml(t('mapLabel')) + '</a>' : '') +
+      '<a class="share" href="' + shareHref + '" aria-label="' + escapeHtml(t('shareLabel')) + '">' + escapeHtml(t('shareLabel')) + '</a>' +
+      '<button type="button" class="note-btn" data-note="' + r.id + '" aria-label="' + escapeHtml(t('noteLabel')) + '">' + escapeHtml(t('noteLabel')) + '</button>' +
+      (r.type !== 'system' ? '<button type="button" class="note-btn" data-schedule="' + r.id + '" aria-label="' + escapeHtml(t('scheduleLabel')) + '">\uD83D\uDCC6 ' + escapeHtml(t('scheduleLabel')) + '</button>' : '') +
       '</div></article>';
   }
 
@@ -1048,15 +1531,17 @@
 
     if (searchQuery.trim()) {
       var q = searchQuery.trim().toLowerCase();
+      var synTypes = expandSearchTypes(q);
       list = list.filter(function (r) {
         return (r.name || '').toLowerCase().indexOf(q) !== -1 ||
           (r.notes || '').toLowerCase().indexOf(q) !== -1 ||
           (r.addr || '').toLowerCase().indexOf(q) !== -1 ||
           (r.type || '').toLowerCase().indexOf(q) !== -1 ||
-          (r.tags || []).some(function (tg) { return String(tg).indexOf(q) !== -1; });
+          (r.tags || []).some(function (tg) { return String(tg).indexOf(q) !== -1; }) ||
+          synTypes.indexOf(r.type) !== -1 || r.type === 'system';
       });
     }
-    return list;
+    return list.map(normalizeResource);
   }
 
   function render() {
@@ -1080,9 +1565,14 @@
       html += '<div class="section-label">' + t('forYou') + '</div>';
     }
     var emptyMsg = viewFilter === 'favorites'
-      ? 'No favorites yet. Tap the heart on any resource to save it here.'
-      : t('noMatch');
-    html += rest.map(renderCard).join('') || '<div class="empty">' + emptyMsg + '</div>';
+      ? '<div class="empty">' + escapeHtml(t('noFavorites')) + '</div>'
+      // Per design principle: an empty search result must never read as "there is no
+      // help" — it means this curated offline list has no match, not that no help
+      // exists. Always give a live escalation path (211) rather than a dead end.
+      : '<div class="empty">' + escapeHtml(t('noMatch')) +
+        '<div style="margin-top:10px"><a class="call" href="tel:211" style="display:inline-block">' +
+        escapeHtml(t('crisis211')) + ': ' + escapeHtml(t('callLabel')) + ' 211</a></div></div>';
+    html += rest.map(renderCard).join('') || emptyMsg;
     $('list').innerHTML = html;
 
     bindCardActionHandlers($('list'));
@@ -1163,25 +1653,37 @@
   function showObStep() {
     var q = ONBOARDING_QUESTIONS[obStep];
     if (!q) { finishOnboarding(); return; }
-    $('obTitle').textContent = q.question;
-    $('obHint').textContent = 'Question ' + (obStep + 1) + ' of ' + ONBOARDING_QUESTIONS.length;
+    $('obTitle').textContent = (lang === 'es' && q.questionEs) ? q.questionEs : q.question;
+    var whyText = (lang === 'es' && q.whyEs) ? q.whyEs : (q.why || '');
+    $('obHint').textContent = 'Question ' + (obStep + 1) + ' of ' + ONBOARDING_QUESTIONS.length + (whyText ? ' \u2014 ' + whyText : '');
     var body = '';
     if (q.type === 'single') {
       body = '<div class="q"><div class="opts">' + q.options.map(function (o) {
         var sel = obDraft[q.id] === o.value ? ' selected' : '';
+        var lbl = (lang === 'es' && o.labelEs) ? o.labelEs : o.label;
         return '<label class="opt' + sel + '"><input type="radio" name="ob" value="' + o.value + '" ' +
-          (sel ? 'checked' : '') + '/> ' + o.label + '</label>';
+          (sel ? 'checked' : '') + '/> ' + escapeHtml(lbl) + '</label>';
       }).join('') + '</div></div>';
     } else {
       var yesSel = obDraft[q.id] === true ? ' selected' : '';
       var noSel = obDraft[q.id] === false ? ' selected' : '';
+      var yesLbl = (lang === 'es' && q.yesLabelEs) ? q.yesLabelEs : q.yesLabel;
+      var noLbl = (lang === 'es' && q.noLabelEs) ? q.noLabelEs : q.noLabel;
       body = '<div class="q"><div class="opts">' +
         '<label class="opt' + yesSel + '"><input type="radio" name="ob" value="yes" ' +
-        (obDraft[q.id] === true ? 'checked' : '') + '/> ' + q.yesLabel + '</label>' +
+        (obDraft[q.id] === true ? 'checked' : '') + '/> ' + escapeHtml(yesLbl) + '</label>' +
         '<label class="opt' + noSel + '"><input type="radio" name="ob" value="no" ' +
-        (obDraft[q.id] === false ? 'checked' : '') + '/> ' + q.noLabel + '</label></div></div>';
+        (obDraft[q.id] === false ? 'checked' : '') + '/> ' + escapeHtml(noLbl) + '</label></div></div>';
+    }
+    if (q.quickExit) {
+      body += '<button type="button" id="obQuickExit" style="width:100%;margin-top:14px;padding:12px;border-radius:10px;border:1px solid var(--surface2);background:transparent;color:var(--muted);font-weight:700;font-size:.8rem">' + escapeHtml(t('dvExit')) + '</button>';
     }
     $('obBody').innerHTML = body;
+    if (q.quickExit && $('obQuickExit')) {
+      $('obQuickExit').addEventListener('click', function () {
+        showConfirm(t('dvExitConfirm')).then(function (ok) { if (ok) quickExit(); });
+      });
+    }
     var opts = $('obBody').querySelectorAll('.opt');
     for (var i = 0; i < opts.length; i++) {
       opts[i].addEventListener('click', function () {
@@ -1241,7 +1743,7 @@
   }
 
   function useGps() {
-    if (!navigator.geolocation) { alert('GPS not available'); return; }
+    if (!navigator.geolocation) { showAlert(t('gpsUnavailable')); return; }
     navigator.geolocation.getCurrentPosition(function (pos) {
       userLat = pos.coords.latitude;
       userLon = pos.coords.longitude;
@@ -1253,7 +1755,7 @@
       $('hoodOverlay').style.display = 'none';
       render();
     }, function () {
-      alert('Could not get location. Pick a neighborhood instead.');
+      showAlert(t('gpsFailed'));
     }, { enableHighAccuracy: false, timeout: 10000, maximumAge: 300000 });
   }
 
@@ -1309,7 +1811,7 @@
   // ---------- My Vault panel ----------
   function vaultCardHtml(item) {
     return '<div class="vault-item"><img src="' + item.dataUrl + '" alt="' + escapeHtml(item.label) + '"/>' +
-      '<button type="button" class="vault-del" data-vault-del="' + item.id + '" aria-label="Remove">\u2715</button>' +
+      '<button type="button" class="vault-del" data-vault-del="' + item.id + '" aria-label="' + escapeHtml(t('removeLabel')) + '">\u2715</button>' +
       '<div class="vault-label">' + escapeHtml(item.label) + '</div></div>';
   }
   function renderVault() {
@@ -1333,8 +1835,13 @@
       for (var i = 0; i < delBtns.length; i++) {
         delBtns[i].addEventListener('click', (function (id) {
           return function () {
-            if (!confirm('Remove this document from your Vault?')) return;
-            vaultDelete(id).then(renderVault);
+            showConfirm(t('removeVaultDocConfirm')).then(function (ok) {
+              if (!ok) return;
+              vaultDelete(id).then(renderVault).catch(function () {
+                showAlert(t('vaultDeleteFailed'));
+                renderVault(); // reflect actual DB state either way
+              });
+            });
           };
         })(delBtns[i].getAttribute('data-vault-del')));
       }
@@ -1349,10 +1856,25 @@
     if (!file) return;
     var reader = new FileReader();
     reader.onload = function () {
-      var label = prompt('What is this document? (e.g. "ID card", "Birth certificate")') || 'Document';
-      var record = { id: 'v' + Date.now(), label: label, dataUrl: reader.result, at: Date.now() };
-      var ready = vaultDb ? Promise.resolve() : openVaultDb();
-      ready.then(function () { return vaultAdd(record); }).then(renderVault);
+      var dataUrl = reader.result;
+      showPrompt(t('vaultLabelPrompt'), '').then(function (label) {
+        if (label === null) return; // person cancelled — do not save anything
+        label = label.trim() ? label.trim() : t('vaultDefaultLabel');
+        var record = { id: 'v' + Date.now(), label: label, dataUrl: dataUrl, at: Date.now() };
+        var ready = vaultDb ? Promise.resolve() : openVaultDb();
+        ready.then(function () { return vaultAdd(record); })
+          .then(function () { renderVault(); })
+          .catch(function () {
+            // Persistence genuinely failed (quota exceeded, IndexedDB unavailable, etc.) — the
+            // record was never written, so we must not let the UI imply otherwise. No document
+            // content, filename, or label is included in this message or logged anywhere.
+            showAlert(t('vaultSaveFailed'));
+            renderVault(); // re-render from actual DB state; the failed item correctly won't appear
+          });
+      });
+    };
+    reader.onerror = function () {
+      showAlert(t('vaultSaveFailed'));
     };
     reader.readAsDataURL(file);
     e.target.value = '';
@@ -1759,12 +2281,14 @@
 
   function deleteEventFromForm() {
     if (!eventFormEditingId) return;
-    if (!confirm('Delete this appointment?')) return;
-    if (scheduledAlarms[eventFormEditingId]) { clearTimeout(scheduledAlarms[eventFormEditingId]); delete scheduledAlarms[eventFormEditingId]; }
-    deleteEvent(eventFormEditingId);
-    $('eventFormOverlay').style.display = 'none';
-    $('scheduleOverlay').style.display = 'flex';
-    renderSchedule();
+    showConfirm(t('deleteAppointmentConfirm')).then(function (ok) {
+      if (!ok) return;
+      if (scheduledAlarms[eventFormEditingId]) { clearTimeout(scheduledAlarms[eventFormEditingId]); delete scheduledAlarms[eventFormEditingId]; }
+      deleteEvent(eventFormEditingId);
+      $('eventFormOverlay').style.display = 'none';
+      $('scheduleOverlay').style.display = 'flex';
+      renderSchedule();
+    });
   }
 
   function addPlanToCalendar() {
@@ -1953,8 +2477,8 @@
   $('cheatClose').addEventListener('click', function () { $('cheatOverlay').style.display = 'none'; });
   $('cheatCopy').addEventListener('click', function () {
     var text = $('cheatBody').textContent;
-    if (navigator.clipboard) navigator.clipboard.writeText(text).then(function () { alert('Copied'); });
-    else alert('Select and copy the text manually');
+    if (navigator.clipboard) navigator.clipboard.writeText(text).then(function () { showAlert(t('copied')); }).catch(function () { showAlert(t('copyManually')); });
+    else showAlert(t('copyManually'));
   });
   $('noteCancel').addEventListener('click', function () { $('noteOverlay').style.display = 'none'; });
   $('noteSave').addEventListener('click', function () {
@@ -1974,6 +2498,11 @@
     updateWeatherBanner();
     render();
   });
+  if ($('btnEmergency')) $('btnEmergency').addEventListener('click', function () {
+    renderEmergency();
+    $('emergencyOverlay').style.display = 'flex';
+  });
+  if ($('emergencyClose')) $('emergencyClose').addEventListener('click', function () { $('emergencyOverlay').style.display = 'none'; });
   $('btnLang').addEventListener('click', function () {
     lang = lang === 'en' ? 'es' : 'en';
     localStorage.setItem('srf_lang', lang);
@@ -2026,17 +2555,18 @@
     var status = $('routineCopyStatus');
     var result = copyPlanToDay(plannerDay, targetDay, false);
     if (result.ok) {
-      status.textContent = 'Copied to ' + DAY_NAMES[targetDay] + '.';
+      status.textContent = t('copiedTo') + ' ' + DAY_NAMES[targetDay] + '.';
     } else if (result.needsConfirm) {
-      var proceed = confirm(DAY_NAMES[targetDay] + ' already has a plan. Overwrite it with ' + DAY_NAMES[plannerDay] + '\u2019s plan?');
-      if (proceed) {
-        var forced = copyPlanToDay(plannerDay, targetDay, true);
-        status.textContent = forced.ok ? 'Copied to ' + DAY_NAMES[targetDay] + '.' : 'Could not copy.';
-      } else {
-        status.textContent = 'Cancelled \u2014 nothing was changed.';
-      }
+      showConfirm(DAY_NAMES[targetDay] + ' ' + t('confirmOverwriteDay') + ' ' + DAY_NAMES[plannerDay] + t('plansQ')).then(function (proceed) {
+        if (proceed) {
+          var forced = copyPlanToDay(plannerDay, targetDay, true);
+          status.textContent = forced.ok ? (t('copiedTo') + ' ' + DAY_NAMES[targetDay] + '.') : t('couldNotCopyDay');
+        } else {
+          status.textContent = t('cancelledNoChange');
+        }
+      });
     } else {
-      status.textContent = 'Nothing to copy.';
+      status.textContent = t('nothingToCopy');
     }
   });
 
@@ -2082,7 +2612,106 @@
   if (!profile.completedAt) openOnboarding();
   render();
 
+  // ---------- Generic dialog focus management (all .overlay elements) ----------
+  // Retrofits focus-trap / Escape-to-close / focus-restore onto every existing
+  // overlay open/close site (~30 scattered `X.style.display = 'flex'/'none'`
+  // calls) via a single MutationObserver, rather than rewriting each call site
+  // individually. Handles nested overlays (e.g. the DV quick-exit confirm
+  // opening appAlertOverlay on top of the still-open onboarding overlay) with
+  // a simple stack: only the top-most open overlay traps Tab/Escape.
+  var overlayStack = [];
+  function focusableIn(el) {
+    return Array.prototype.slice.call(
+      el.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])')
+    ).filter(function (n) { return n.offsetParent !== null; }); // visible only
+  }
+  function onOverlayOpened(el) {
+    if (overlayStack.some(function (o) { return o.el === el; })) return; // already tracked
+    overlayStack.push({ el: el, returnFocus: document.activeElement });
+    // Only move focus if the dialog's own open code hasn't already placed focus
+    // somewhere inside it (showAlert/showConfirm/showPrompt already focus a
+    // specific default button/field synchronously; this observer callback runs
+    // after that, so we must not clobber a deliberate choice like "focus OK").
+    if (!el.contains(document.activeElement)) {
+      var f = focusableIn(el);
+      if (f.length) f[0].focus();
+    }
+  }
+  function onOverlayClosed(el) {
+    var idx = -1;
+    for (var i = 0; i < overlayStack.length; i++) { if (overlayStack[i].el === el) { idx = i; break; } }
+    if (idx === -1) return;
+    var entry = overlayStack[idx];
+    overlayStack.splice(idx, 1);
+    // If another overlay is still open (e.g. this one closed only because a
+    // different overlay is replacing it, like closeMore()+openVault() in the
+    // same click handler), that overlay owns focus now — restoring focus to
+    // this one's trigger element would yank focus to a control now hidden
+    // behind the new overlay. Only restore when nothing else is open.
+    if (overlayStack.length > 0) return;
+    if (entry.returnFocus && document.body.contains(entry.returnFocus) && typeof entry.returnFocus.focus === 'function') {
+      entry.returnFocus.focus();
+    }
+  }
+  document.querySelectorAll('.overlay').forEach(function (el) {
+    var mo = new MutationObserver(function () {
+      var visible = el.style.display !== 'none' && el.style.display !== '';
+      if (visible) onOverlayOpened(el); else onOverlayClosed(el);
+    });
+    mo.observe(el, { attributes: true, attributeFilter: ['style'] });
+    // Initialize overlays that were already visible before the observer existed
+    // (e.g. first-launch onboarding opens during startup).
+    var visible = el.style.display !== 'none' && el.style.display !== '';
+    if (visible) onOverlayOpened(el);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (!overlayStack.length) return;
+    var top = overlayStack[overlayStack.length - 1].el;
+    if (e.key === 'Tab') {
+      var f = focusableIn(top);
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      else if (!top.contains(document.activeElement)) { e.preventDefault(); first.focus(); } // focus escaped somehow
+    } else if (e.key === 'Escape') {
+      // Escape only ever triggers the panel's own existing Cancel/Close control
+      // (never a Save/Delete/OK-on-a-destructive-confirm), so it can never bypass
+      // a required confirmation — it's equivalent to the person tapping Cancel.
+      var safeBtn = top.querySelector('#appAlertCancel') ||
+        top.querySelector('[id$="Cancel"]') ||
+        top.querySelector('[id$="Close"]');
+      if (safeBtn) safeBtn.click();
+      else top.style.display = 'none';
+    }
+  });
+
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js').catch(function () {});
+    navigator.serviceWorker.register('sw.js').then(function (reg) {
+      // Update-available flow: a new SW is deliberately held in 'waiting'
+      // (see sw.js — skipWaiting is no longer automatic) until the person
+      // confirms, so code never changes out from under an open tab silently.
+      function promptUpdate(waitingWorker) {
+        showConfirm(t('updateAvailable') + ' ' + t('updateNow') + '?').then(function (yes) {
+          if (yes) waitingWorker.postMessage('SKIP_WAITING');
+        });
+      }
+      if (reg.waiting) promptUpdate(reg.waiting);
+      reg.addEventListener('updatefound', function () {
+        var installing = reg.installing;
+        if (!installing) return;
+        installing.addEventListener('statechange', function () {
+          if (installing.state === 'installed' && navigator.serviceWorker.controller) {
+            promptUpdate(installing);
+          }
+        });
+      });
+      var reloading = false;
+      navigator.serviceWorker.addEventListener('controllerchange', function () {
+        if (reloading) return;
+        reloading = true;
+        window.location.reload();
+      });
+    }).catch(function () {});
   }
 })();
